@@ -23,7 +23,7 @@ cordone sanitario.
 
 ### End Users
 
-#### Marco, Immune Volunteer
+#### Marco the Immune Volunteer
 
 ##### Details
 
@@ -40,7 +40,7 @@ He is afraid of:
 - Being tracked and observed in his daily life
 - Not knowing how to use the application properly
 
-#### Paola, Pharmacist
+#### Paola the Pharmacist
 
 ##### Details
 
@@ -53,7 +53,7 @@ Paola's goal is to get back to “business as usual" as soon as possible. Her fa
 
 Paola cares about her community, and especially their health. She’s afraid the current situation will be prolonged and that everyone will suffer, if not due to health conditions and access to treatment, due to the economic impact that this crisis will have. 
 
-#### Walter, Institutional Forces
+#### Walter the Institutional Force
 
 ##### Details
 Walter is 51, he works with the Civil Defence forces and he is in charge of coordinating volunteering efforts in a large province with a population of 1.2M people.
@@ -65,7 +65,7 @@ Walter wants to leverage all existing resources to mitigate the damages of the c
 He fears to unknowingly spread the virus while trying to mitigate its damages. While he values privacy, he needs technological aid to gain visibility and make quick decisions. 
 
 
-#### Franca, Fragile Person
+#### Franca the Fragile Person
 
 ##### Details
 Franca is 72, already home-bound due to the government directions to the elderly. She’s getting essentials delivered at home by either supermarkets or volunteers. Living alone, with no family within her city she needs external support to survive. 
@@ -88,7 +88,7 @@ Marco’s state is immune
 
 #### Story
 Marco is asked by
-[Andrea](##marco,-immune-volunteer) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Andrea](##marco,-immune-volunteer) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Andrea](##marco,-immune-volunteer).
+[Andrea](####marco-the-immune-volunteer) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Andrea](####marco-the-immune-volunteer) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Andrea](####marco-the-immune-volunteer).
 
 
 US9: Marco
