@@ -88,7 +88,7 @@ Marco’s state is immune
 
 #### Story
 Marco is asked by
-[Andrea](####marco-the-immune-volunteer) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Andrea](####marco-the-immune-volunteer) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Andrea](####marco-the-immune-volunteer).
+[Andrea](#marco-the-immune-volunteer) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Andrea](#marco-the-immune-volunteer) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Andrea](#marco-the-immune-volunteer).
 
 
 US9: Marco
