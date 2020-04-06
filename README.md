@@ -17,12 +17,9 @@ cordone sanitario.
 
 ### SDK Personas
 	
-	App
-	Business Owner
-
-
-**Business man** who designed/built a contacts tracing (?) App or is currently developing one.
-**App Developer** Software developer who will be in charge of integrating our SDK into hisapplication.
+- **App Business Owner**
+- **Business man** who designed/built a contacts tracing (?) App or is currently developing one.
+- **App Developer** Software developer who will be in charge of integrating our SDK into hisapplication.
 
 
 ### End Users
