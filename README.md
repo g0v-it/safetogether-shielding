@@ -3,9 +3,8 @@ Covid-19 StaySafe shielding project
 
 
 
+## Personas 
 
-
-## Personas & User Stories
 
 Premessa: preesiste un backend (”COC”)che gestisce le
 comunicazioni tra le App utente ed il backend stesso. Le App
@@ -24,23 +23,72 @@ cordone sanitario.
 
 ### End Users
 
-- Marco: patient
-- Giovanni: physician or pharmacist
-- Maria: hospital physician
-- Andrea:police officer
-- Walter: member of protezione civile
-- Franca: at-risk individual
+#### Marco, Immune Volunteer
 
-US8: Proof of
-Immunity -- Marco Is Asked to Prove that He Is Immune. [Precondition:
-Marco’s state is immune] Marco is asked by
-[Andrea/Walter] to prove that his state is immune. Marco opens
-the mobile app and authenticates. The app shows a QR code that
-contains Marco’s COC_ID. [Andrea/Walter] scans the QR code using
-the operator app. The operator app checks Marco’s
-state on the backend (including the expiration date if the state is
-immune), and returns it to [Andrea/Walter].
+##### Details
 
+Marco is 34, he’s a proactive with strong civic sense. He was diagnosed with SARS-CoV-2 but has now fully recovered. He is keen to get back to work soon after a long quarantine. In the spirit of helping his local community he has taken steps to become a volunteer and provide care to fragile elderly. He knows how to use a smartphone, but technology isn’t really his thing.
+
+##### Goals
+Marco would like to get the “volunteer” certification so that he could go ahead and start helping his community. He is looking for the fastest and simplest way to achieve this goal. 
+
+##### Values and Fears
+
+Marco cares about privacy in general and doesn’t want to be tracked or share his data with any large government or corporation</br>
+He is afraid of:
+- Carrying the virus to the fragile people he is helping
+- Being tracked and observed in his daily life
+- Not knowing how to use the application properly
+
+#### Paola, Pharmacist
+
+##### Details
+
+Paola is 47, living in Milano, she’s been working in her pharmacy with her husband for over 12 years. She’s open minded and relaxed, taking life one step at a time. She hasn’t been tested for SARS-CoV-2, but none of his relatives was exposed so fairly confident of not being infectious. 
+
+##### Goals
+Paola's goal is to get back to “business as usual" as soon as possible. Her family depends on the pharmacy business. She’s now one of the few registered professionals that can test the virus antibodies and produce digital certificates for immunity. While she’s happy to contribute to solving the current crisis, her major interests stay with the pharmacy itself. 
+
+##### Values and Fears
+
+Paola cares about her community, and especially their health. She’s afraid the current situation will be prolonged and that everyone will suffer, if not due to health conditions and access to treatment, due to the economic impact that this crisis will have. 
+
+#### Walter, Institutional Forces
+
+##### Details
+Walter is 51, he works with the Civil Defence forces and he is in charge of coordinating volunteering efforts in a large province with a population of 1.2M people.
+
+##### Goals
+Walter wants to leverage all existing resources to mitigate the damages of the current epidemic. Supporting all those in need with essentials and protective equipment. He needs to recruit the most immune volunteers possible to serve the local population. 
+
+##### Values and Fears
+He fears to unknowingly spread the virus while trying to mitigate its damages. While he values privacy, he needs technological aid to gain visibility and make quick decisions. 
+
+
+#### Franca, Fragile Person
+
+##### Details
+Franca is 72, already home-bound due to the government directions to the elderly. She’s getting essentials delivered at home by either supermarkets or volunteers. Living alone, with no family within her city she needs external support to survive. 
+
+##### Goals
+Survive. She needs to rely on low-tech communication, not having a computer and having only limited experience on how to use her smartphone.  
+
+##### Values and Fears
+Franca fears to be “left behind” and to have little means to request help/support. 
+
+
+## User Stories
+
+### Proof of Immunity
+
+#### Conditions
+
+##### Precondition
+Marco’s state is immune
+
+#### Story
+Marco is asked by
+[Andrea](##marco,-immune-volunteer) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Andrea](##marco,-immune-volunteer) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Andrea](##marco,-immune-volunteer).
 
 
 US9: Marco
