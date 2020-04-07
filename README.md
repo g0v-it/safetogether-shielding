@@ -143,65 +143,46 @@ between Marco and Franca. Franca verifies that Marco matches the
 photo shown on her mobile app, and opens the door.
 
 
-Marco va in farmacia
-Il farmacista gli fa
-un test anticorpale. 
 
-Se il test è
-positivo, il farmacista attiva l’App operatore, richiede il
-codice fiscale e il numero di telefono e lo registra nell’App che
-genera una notifica ad una autorità.
-Altrimenti il
-farmacista informa Marco che, se lo desidera, può procedere a
-registrare il certificato del test sulla sua applicazione.
-Se Marco lo
-desidera, quindi, attiva l’App utente. L’App utente
-presenta un QRcode che codifica timestamp ed il codice univoco
-dell’App stessa (COC_ID). Il farmacista attiva l’App
-operatore, con questa legge il QRcode, seleziona l’esito del
-test (negativo, immune) e invia l’esito al backend. Il backend
-registra l’informazione in un db e la invia al Backend COC che
-trasmette la certificazione all’App Utente che memorizza il
-certificato localmente.
+### [US13] Antibodies test
 
+#### Conditions
+
+##### Precondition
+Marco’s state is unknown
+
+#### Story
+Marco goes to [Paola](#paola-the-pharmacist) in order to perform an antibodies test.
+If the test is positive [Paola](#paola-the-pharmacist) ask for Marco's tax code and phone number and records them using operator app.
+The operator app notifies the institutional forces.
+(Also has to update db?)
+
+Otherwise [Paola](#paola-the-pharmacist) informs [Marco](#marco-the-immune-volunteer) that she can add the test-certificate on his user app if he wants. (And if he doesn't want?)
+[Marco](#marco-the-immune-volunteer) can open the user-app that generates a QRcode (QRcode=f(timestamp,COC_ID)), [Paola](#paola-the-pharmacist) uses the operator-app to read the QRcode. After that she selects the test result (negative or immune) and the operetor app sands the information to the backend.
+
+The information are stored in a db, morover they are sended to COC Backend that forwards the certificate to the user-app.
+The certificate will be stored [Marco](#marco-the-immune-volunteer)'s device memory.
 
 
-Marco va da Walter
-alla protezione civile e si offre come volontario per partecipare al
-cordone sanitario per le persone fragili
-Marco attiva l’App
-utente e presenta a Walter il suo QRCode che codifica il COC_ID,
-la data e l’ora e l’esito dell’esame.
-Walter legge con la
-sua App utente il QRcode e verifica che Marco è immune e la
-data di scadenza del certificato. Walter registra i dati di Marco, il
-COC_ID e dati certificazione sui sistemi della protezione civile.  Il
-sistema della protezione civile, usando il Backend COC, manda all’App
-Utente di Marco  la certificazione di iscrizione come volontario
-della Protezione Civile e gli fa fare la procedura di enrollment
-biometrico locale sull’App, davanti a Walter.
+### [US14] expired immunity
 
+#### Conditions
 
+##### Precondition
+[us13] [Marco](#marco-the-immune-volunteer) has a test-certificate
 
-Dopo alcuni giorni,
-il backend comunica all’App utente di Marco che deve tornare
-dal farmacista per un nuovo test, chè la sua certificazione di
-immunità è scaduta.
+#### Story
+The test-certificate has an expiring-date. After this date [Marco](#marco-the-immune-volunteer) has to go back to [Paola](#paola-the-pharmacist) in order to update his immunity condition.
 
+### [US15] Marco is a bad person
 
+#### Conditions
 
-Marco si sente male,
-va dal medico che gli fa un tampone. Il medico registra informazioni
-dell’esame ed il suo COC_ID tramite una pagina web. Il sistema
-invia tramite il Backend COC all’App di Marco una segnalazione di
-sospensione della certificazione di Immunità
-Il giorno dopo
-arriva l’esito del tampone.
-Se è positivo, il
-medico registra l’informazione e annulla il certificato di immunità
-Se  è negativo, il
-sistema registra l’informazione e riabilita il certificato di
-immunità
+##### Precondition
+ [Marco](#marco-the-immune-volunteer) has a test-certificate
+
+#### Story
+When [Marco](#marco-the-immune-volunteer) goes to [Franca](#franca-the-fragile-person) robs her. Franca reports the crime to Carabinieri. Pietro, the policeman, uses the user-app to read [Franca](#franca-the-fragile-person) COC_ID, then He asks to Stefano, the app owner, [Marco](#marco-the-immune-volunteer)'s COC_ID stored in [Franca](#franca-the-fragile-person)'s contact logs. Pietro, the policeman, asks to [Walter](#walter-the-istitutional) to revoke [Marco](#marco-the-immune-volunteer)'s volunteer certificate.
 
 
 
