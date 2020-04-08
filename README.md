@@ -77,6 +77,27 @@ Survive. She needs to rely on low-tech communication, not having a computer and 
 Franca fears to be “left behind” and to have little means to request help/support.
 
 
+#### Andrea the lorry driver
+##### Details
+Andrea is 51, she is from Poland. She drives a lorry for work. Sometimes she has to travel across countries to deliver goods.
+
+##### Goals
+Andrea's goal is to get back to “business as usual" as soon as possible. Her family depends on the pharmacy business.
+##### Values and Fears
+She fears that she might lose her job in case travel across Europe is restricted.
+Some countries may deny her access, even though she could be immune.
+
+
+#### Natasha CEO of Lorry for women.
+##### Details
+Natasha is 43, she owns the comapany where [Andrea](#andrea-the-lorry-driver).
+##### Goals
+She has been hit hard by the crisis, so she needs to get back to "business as usual" as soon as possible.
+##### Values and Fears
+- She fears that due to travel restrictions her business might go under.
+- She fears that her employees might be endangered, phisically and economically.
+
+
 ## User Stories
 
 ### [US8] Proof of Immunity
@@ -88,7 +109,7 @@ Marco’s state is immune
 
 #### Story
 Marco is asked by
-[Andrea](#marco-the-immune-volunteer) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Andrea](#marco-the-immune-volunteer) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Andrea](#marco-the-immune-volunteer).
+[Walter](#walter-the-istitutional) to prove that his state is immune. Marco opens the mobile app and authenticates. The app shows a QR code that contains Marco’s COC_ID. [Walter](#walter-the-istitutional) scans the QR code using the operator app. The operator app checks Marco’s state on the backend (including the expiration date if the state is immune), and returns it to [Walter](#walter-the-istitutional).
 
 ### [US9] Marco Volunteers to Join Cordone Sanitario
 ##### Precondition
@@ -200,6 +221,25 @@ The test-certificate has an expiring-date. After this date [Marco](#marco-the-im
 
 #### Story
 When [Marco](#marco-the-immune-volunteer) goes to [Franca](#franca-the-fragile-person) robs her. Franca reports the crime to Carabinieri. Pietro, the policeman, uses the user-app to read [Franca](#franca-the-fragile-person) COC_ID, then He asks to Stefano, the app owner, [Marco](#marco-the-immune-volunteer)'s COC_ID stored in [Franca](#franca-the-fragile-person)'s contact logs. Pietro, the policeman, asks to [Walter](#walter-the-istitutional) to revoke [Marco](#marco-the-immune-volunteer)'s volunteer certificate.
+
+
+### [US16] Natasha encourages her employees to take the test
+#### Conditions
+##### Precondition
+#### Story
+Natasha wants to do business in Italy knowing that crossing the border is permitted only if her drivers have a certification of immunity. She encourages her employees to take the test and obtain permission to cross.
+
+### [US17] Andrea corsses the italian border
+#### Conditions
+##### Precondition
+Marco’s state is immune.
+[US16] Natasha encourages her employees to take the test
+#### Story
+Following Natasha's advice she takes the immunity test and obtains the certification.
+Now she can cross the Italian boarder.
+At the border she authenticate herself using the user application and the COC_ID.
+[Walter](#walter-the-istitutional) grants her access.
+
 
 
 
