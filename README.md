@@ -180,8 +180,6 @@ photo shown on her mobile app, and opens the door.
 
 
 
-
-
 ### [US13] Antibodies test
 
 #### Conditions
@@ -217,7 +215,7 @@ The test-certificate has an expiring-date. After this date [Marco](#marco-the-im
 #### Conditions
 
 ##### Precondition
- [Marco](#marco-the-immune-volunteer) has a test-certificate
+[Marco](#marco-the-immune-volunteer) has a test-certificate
 
 #### Story
 When [Marco](#marco-the-immune-volunteer) goes to [Franca](#franca-the-fragile-person) robs her. Franca reports the crime to Carabinieri. Pietro, the policeman, uses the user-app to read [Franca](#franca-the-fragile-person) COC_ID, then He asks to Stefano, the app owner, [Marco](#marco-the-immune-volunteer)'s COC_ID stored in [Franca](#franca-the-fragile-person)'s contact logs. Pietro, the policeman, asks to [Walter](#walter-the-istitutional) to revoke [Marco](#marco-the-immune-volunteer)'s volunteer certificate.
@@ -241,27 +239,67 @@ At the border she authenticate herself using the user application and the COC_ID
 [Walter](#walter-the-istitutional) grants her access.
 
 
+## User Stories (in detail)
+
+### Marco – Volunteer
+
+- **M1 – Volunteer Onboarding**
+As a Volunteer, Marco wants to get registered quickly and smoothly so that he can start to help as soon as possible. 
+
+- **M2 – Volunteer Immunity Certification Registration**
+As a Volunteer, Marco needs to get a certification of his immunity and be able to display it upon request so that those he interacts with can trust him. 
+
+- **M3 – Volunteer Immunity Certification Renewal**
+As a Volunteer, Marco wants to renew his immunity certification smoothly and effectively so that he can carry on working as volunteer. 
+
+- **M4 – Volunteer Immunity Certification Cancellation**
+As a Volunteer, Marco needs to know if/when his immunity certification is cancelled or will expire so that he can either renew it or change his behavior effectively.
+
+- **M5 – Volunteer Registration with Authorities**
+As a Volunteer, Marco wants to register as a Volunteer with the Authorities so that he can start helping out. 
+
+- **M6 – Volunteer Recognition**
+As a Volunteer, Marco needs to be easily recognizable (especially by fragile / high-risk citizens) so that he can perform his duties effectively. 
 
 
-Marco viene inviato
-da Walter a visitare Franca, una anziana ipertesa. Marco suona alla
-porta e Franca gli chiede di farsi riconoscere. L’App utente
-di Marco verifica la validità dei certificati di immunità e di
-iscrizione alla protezione civile, richiede a Marco di effettuare un
-riconoscimento biometrico locale e quindi procede a fare una
-scansione Bluetooth dei COC_ID vicini, li invia al Backend dell’App
-che tramite il Backend COC manda un messaggio all’App utente di
-Franca che presenta un semaforo verde. Franca lo vede e fa entrare
-Marco.
+### Paola – Pharmacist
 
+- **P1 – Sanitary Personnel Onboarding**
+As a Pharmacist, Paola wants to download and use the App easily so that she can start to add certifications and test results.
+- **P2 – Sanitary Personnel Antibodies Test Submission Registration**
+As a Pharmacist, Paola wants to register the submission of an Antibodies test via the App (including the test subject ID) so that all data are shared and up to date.
+(maybe using the sanitary card if possible).
+- **P3 – Sanitary Personnel Antibodies Test Results Registration**
+As a Pharmacist, Paola wants to register the Antibodies Test results updating the registration submission easily with the least amount of effort so that she can go back to work. 
+- **P4 – Sanitary Personnel Immunity Registration***
+As a Pharmacist, Paola wants to issue an Immunity Certification seamlessly after receiving a positive result on an Antibodies test so that the test subject is immediately alerted and can start working or helping others. We can consider the “positive antibodies test” registration as the element that triggers automatic certification.
+- **P5 – Sanitary Personnel Immunity Renewal***
+As a Pharmacist, Paola wants to renew an Immunity Certification as quickly as possible after receiving test results. We can consider a further “positive antibodies test” registration as the element that triggers automatic renewal of the Immunity Certification.
+- **P6 – Sanitary Personnel Immunity Revocation***
+As a Pharmacist, Paola wants to revoke an Immunity Certification by updating a Virus Test result or due to the subject showing symptoms of Covid-19.
 
+//ASK About P7 and P8 because our view is that these details are not specific for cordone saitario
 
-Marco da’ una
-bastonata in testa a Franca e le ruba gli ori; Franca denuncia
-l’accaduto ai Carabinieri. L’appuntato semplice Pietro usa l’App
-utente per leggere il COC_ID dell’App utente di Franca, richiede a
-Stefano, gestore del servizio, il COC_ID del fedifrago che Stefano
-rintraccia facendo una query con il log dei contatti di Franca.
-Pietro si rivolge alla protezione civile che invia un messaggio
-all’App Utente di Marco revocando il certificato e acquisendone la
-posizione che comunica all’appuntato.
+*Immunity status should be tied to tests performed and the results of those tests should affect the immunity status directly, without leaving the Pharmacist any direct control on the certification status control. We should also consider what test details we want/can include in the system.
+
+### Walter – Institutional Forces
+
+- **W1 – Institutional Forces Onboarding**
+As part of the Institutional Forces, Walter wants to download and use the App on his phone quickly and easily so that he can start using it. 
+- **W2 – Institutional Forces Citizen Status Check**
+As part of the Institutional Forces, Walter needs to check the status of a Citizen so that he could make decisions effectively.
+- **W3 – Institutional Forces Volunteer Status Check**
+As part of the Institutional Forces, Walter wants to check the immunity status of a Volunteer so that he could register him/her as Volunteer or make related decisions. 
+- **W4 – Institutional Forces Volunteer Registration**
+As part of the Institutional Forces, Walter wants to register a Volunteer (who is immune) effectively with few clicks on the App so that she/he can start working soon. 
+- **W5 – Institutional Forces Volunteer Management**
+As part of the Institutional Forces, Walter wants to be regularly updated on the status of all Volunteers and forces under his management so that he can ensure a high quality and efficacy of his services.
+
+### Franca – Fragile Population
+
+-	**F1 – Fragile Population Onboarding**
+As part of the Fragile Population, Franca wants to get access to the services but struggles to use digital devices. She needs step by step guidance on how to access, download and use the app (or something more rudimental) so that she can request and receive support.
+-	**F2 – Fragile Population Volunteer Recognition**
+As part of the Fragile Population, Franca needs to recognize a Volunteer when he/she reaches out to her to deliver goods or services so that she is safe. 
+-	**F3 – Fragile Population FeedBack**
+As part of the Fragile Population, Franca needs to express her pleasure/displeasure of the service provided.
