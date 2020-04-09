@@ -6,12 +6,9 @@ Covid-19 StaySafe shielding project
 ## Personas
 
 
-Premessa: preesiste un backend (”COC”)che gestisce le
-comunicazioni tra le App utente ed il backend stesso. Le App
-sono identificate con un ID chiamato COC_ID.
-A questo Backend COC
-si affianca un nuovo backend, per la sola gestione del sistema di
-cordone sanitario.
+Premise: there is a backend ("COC") that menages comunication with apps.
+Apps are identified by an ID ("COC_ID") 
+There is another backend that menages staysafe-cordone sanitario system.
 
 
 ### SDK Personas
@@ -191,9 +188,9 @@ Marco’s state is unknown
 Marco goes to [Paola](#paola-the-pharmacist) in order to perform an antibodies test.
 If the test is positive [Paola](#paola-the-pharmacist) ask for Marco's tax code and phone number and records them using operator app.
 The operator app notifies the institutional forces.
-(Also has to update db?)
 
-Otherwise [Paola](#paola-the-pharmacist) informs [Marco](#marco-the-immune-volunteer) that she can add the test-certificate on his user app if he wants. (And if he doesn't want?)
+
+Otherwise [Paola](#paola-the-pharmacist) informs [Marco](#marco-the-immune-volunteer) that she can add the test-certificate on his user app if he wants. 
 [Marco](#marco-the-immune-volunteer) can open the user-app that generates a QRcode (QRcode=f(timestamp,COC_ID)), [Paola](#paola-the-pharmacist) uses the operator-app to read the QRcode. After that she selects the test result (negative or immune) and the operetor app sands the information to the backend.
 
 The information are stored in a db, morover they are sended to COC Backend that forwards the certificate to the user-app.
@@ -278,7 +275,7 @@ As a Pharmacist, Paola wants to renew an Immunity Certification as quickly as po
 - **P6 – Sanitary Personnel Immunity Revocation***
 As a Pharmacist, Paola wants to revoke an Immunity Certification by updating a Virus Test result or due to the subject showing symptoms of Covid-19.
 
-//ASK About P7 and P8 because our view is that these details are not specific for cordone saitario
+
 
 *Immunity status should be tied to tests performed and the results of those tests should affect the immunity status directly, without leaving the Pharmacist any direct control on the certification status control. We should also consider what test details we want/can include in the system.
 
@@ -303,3 +300,59 @@ As part of the Fragile Population, Franca wants to get access to the services bu
 As part of the Fragile Population, Franca needs to recognize a Volunteer when he/she reaches out to her to deliver goods or services so that she is safe. 
 -	**F3 – Fragile Population FeedBack**
 As part of the Fragile Population, Franca needs to express her pleasure/displeasure of the service provided.
+
+## Functionalities
+### User App
+- **Autentication**
+- **User certification lookup**
+- **User test lookup**
+- **Request help**
+- **Receive volunteer autentication**
+### Operator App (Volunteer)
+- **Autentication**
+- **User certification lookup**
+- **User test lookup**
+- **Request help**
+- **Reply to help request**
+- **Confirm autentication**
+### Operator App ( Sanitary Personnel )
+- **Autentication**
+- **Certificate creation**
+- **Certificate update**
+- **Certificate removal**
+- **Test creation**
+- **Test results publication**
+
+
+## Certificate
+The immunity certificate must contain the following info:
+```
+<certification id>
+<test id>
+<manifacturer id>
+<lot id>
+<identificativo entità che lo ha effettuato>
+<DB url where test data are stored>
+<Sanitary Personnel id, who submitted the test>
+<test timestamp>
+<test type (PCR, IGG, IGM)>
+<test outcome>
+<Identity document number>
+<Identity document type>
+<Identity document issuer>
+```
+When a user wants to prove his/her immunity has to show a QRcode that contains these informations
+```
+<DB url where test data are stored>
+<test type (PCR, IGG, IGM)>
+<test outcome>
+<Identity document number>
+<Identity document type>
+```
+
+## Issues
+- Virus test is different from antibodies test, which one should we consider for specification purposing? Both?
+- The QRcode is generated upon onboarding or upon test result?
+- Should the volunteer have a specific certification that proves its status, or is the status just an information stored on the DB?
+- How the sanitary personnel are enrolled? Is it a metter of the application or someone else?
+- Does a test machine update the test outcome in real time on the db? If so, is it a matter of the application or the backend should provide a sicure call to update test results?
