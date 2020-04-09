@@ -13,9 +13,70 @@ There is another backend that menages staysafe-cordone sanitario system.
 
 ### SDK Personas
 
-- **App Business Owner**
-- **Business man** who designed/built a contacts tracing (?) App or is currently developing one.
-- **App Developer** Software developer who will be in charge of integrating our SDK into hisapplication.
+#### Albert the App Business Owner
+
+Albert is 48, he's the owner of a successful small software company. He has developed websites, web applications and mobile applications for customers all over Europe. He's been very successfull on the market and his company is considered a leader for mobile development. His company's operations haven't been disrupted by SARS-CoV-2 but is worried that the economic downturn following the epidemic could severly impact his business. He believes that the usage of tracing technology could help the socity to recover more rapidly and keep it working while waiting for more definitive solutions to the disease.
+
+##### Goals
+Albert would like to create an application to help with contact tracing and wants to use his company experience in building mobile apps to 
+
+##### Values and Fears
+
+Albert cares about:
+- helping the local community through using his company know how
+- consolidating his company position as a leader in his market
+
+She is afraid of:
+- Being cut-out from the upcoming platform
+- Having a solution that is not privacy compliant because of the interoperability platform
+- Having an application that has security issues
+- Being unable to anticipate the shifts in the digital and mobile apps market
+
+#### Alice the App Product Owner
+
+##### Details
+
+Alice is 31, she’s a product manager for digital companies. She has worked mostly on B2C facing online services and consumer mobile apps. She wants to crafti applications that are easy to use and pleasant and wants to create experiences that users love. When her current company owner had started exploring the idea of developing a contact tracing application for SARS-CoV-2 she has jumped right into the opportunity since she feels that it could be a great way to make an impact. She also believes that developing an effective application will require a deep understanding of end users and how to build great UXes
+
+##### Goals
+Alice would like to create an application that is easy for its users as it believes that this is the best way to drive the usage and make it effective.
+
+##### Values and Fears
+
+Alice cares about:
+- having the freedom to build the best user experience 
+- being able design a responsive application for both Android and iOS phones
+
+She is afraid of:
+- Having to design cumbersome user onboarding and identification flows
+- Being limited with the way the app should be designed
+
+
+#### Bob the App Developer
+
+##### Details
+
+Bob is 25, he’s an experienced mobile software developer. He has worked with a few different companies as a freelancer and helped to create apps for both Android and iOS ecosystems. His current company has decided to participate in the development of a contact tracing application that integrates into the Staysafe platform and he has been tasked with integrating the SDK. He is expert in  native development but lately moved to cross-platform tools to improve the time-to-market and have a common codebase across both mobile app stores. 
+
+##### Goals
+Bob would like to integrate the SDK into his workflow as painlessly and rapidly as possible. To do so he would like to be able to keep using the mobile app stack he has standardized on which is based on React Native.
+
+##### Values and Fears
+
+Bob cares about:
+- building applications that are successful and high quality in terms of user feedback on the app stores
+- being efficient in coding the application, and being able to code [Alice](#alice-the-app-product-owner) requirements
+- being able to easily track down errors and issues, specially with with external SDKs
+
+He is afraid of:
+- Having to battle with unclear or lacking documentation
+- Being unable to build the application using his current tools
+- Having to use an SDK with bugs and unexpected behaviours
+
+that take advantage of the device features
+that can be monetized well (they rely on in-app purchases)
+that are responsive to the user input
+that work on phones and tablets
 
 
 ### End Users
