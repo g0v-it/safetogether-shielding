@@ -1,5 +1,8 @@
 # SafeTogether Shielding video demo story board
 
+A [video storyboard](https://www.powtoon.com/c/f2AjuQcsqg0/1/m) is available: 
+
+
 - Marco si reca da Giovanni per verificare la sua immunità al Covid-19 ed esegue i test sierologici che danno esito positivo.
 - Giovanni il dottore firma un certificato di immunità per Marco e invia certificato al device di Marco
 
@@ -22,5 +25,3 @@
 - Il call center rassicura la signora Franca sul fatto che Marco è un volontario autorizzato.
 - Franca apre a Marco che ha l'opportunità di scambiare quattro chiacchere e  consegnare le medicine
 
-
-La app che gestisce il certificati e l'autenticazione è  DIZME di Infocert che è possibile scaricare e provare.
