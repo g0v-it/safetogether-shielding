@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  # store:
+  #   build: ./store
+  api:
+    build: ./api
+    ports:
+      - "8080:80"
+    # depends_on:
+    #   - store
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - api
