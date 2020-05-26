@@ -1,6 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import { isAuthenticated } from "@/util/auth.js";
+
+const ifAuthenticated = (to, from, next) => {
+  if (isAuthenticated()) {
+    next()
+    return
+  }
+  next('/login')
+}
+
+const ifNotAuthenticated = (to, from, next) => {
+  if (!isAuthenticated()) {
+    next()
+    return
+  }
+  next('/')
+}
 
 Vue.use(VueRouter)
 
@@ -8,22 +25,24 @@ const routes = [
   {
     path: '/',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/details',
     name: 'Details',
-    component: () => import('../views/Details.vue')
+    component: () => import('../views/Details.vue'),
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
+    beforeEnter: ifNotAuthenticated
   }
 ]
 
 const router = new VueRouter({
-  mode: "history",
   routes
 })
 
