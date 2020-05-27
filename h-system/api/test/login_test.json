@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "60d02839-bee8-42bc-8c37-38420ffe78cc",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8082/list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f94d6e5d-436a-475b-bcdd-04a5e9aebf50",
+						"exec": [
+							"tests[\"Status code is 401\"] = responseCode.code === 401;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"list"
+					]
+				},
+				"description": "call list api without autentication retunr 401"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8082/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d50e176-03b8-4580-8a58-b2e1d15a4f2f",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"pm.environment.set(\"token\", responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"username\":\"Giovanni\",\n\"password\":\"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"login"
+					]
+				},
+				"description": "make login and save token"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8082/list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "879f61d6-4098-491a-9aeb-8e0345fd2295",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Body\"] = responseBody == \"complimenti che ti sei connesso\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"list"
+					]
+				},
+				"description": "call list api with auth"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -12,10 +12,6 @@ app.use(CORS.apply);
 app.use(Auth.apply);
 
 
-const ekkle = {
-    ciao : "mio dio"
-}
-
 app.get('/', (req, res) => res.json(ekkle))
 
 //const token = loginManager.connect("giovanni", "giovanni");
