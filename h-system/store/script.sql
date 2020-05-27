@@ -20,21 +20,14 @@ CREATE TABLE Certificate (
 	token_user VARCHAR(20) NOT NULL,
 	t_id VARCHAR(40) NOT NULL,
 	operator VARCHAR(20) NOT NULL,
-	status ENUM('active','disabled')
+	status ENUM('active','disabled'),
 	PRIMARY KEY (token_user,t_id),
 	FOREIGN KEY (operator) REFERENCES Operator(username)
 );
 
-INSERT INTO Facility (code,name, address,type) VALUES(
-    "OSPEDALE123",
-    "Nome dell'ospedale",
-    "Indirizzo dell'ospedale",
-    "hospital"
-);
-INSERT INTO Operator (username,password,healthcare_id,role,facility) VALUES(
+
+INSERT INTO Operator (username,password,role) VALUES(
     "Giovanni",
     "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-    "MEDICO0123",
-    "operator",
-    "OSPEDALE123"
+    "admin"
 );

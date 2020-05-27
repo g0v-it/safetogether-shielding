@@ -1,16 +1,35 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div id="app" >
+    <router-view />
   </div>
 </template>
 
+<script>
+import http from "./util/http.js";
+import { removeToken } from "./util/auth.js";
+
+export default {
+  created() {
+    /**
+     * Add interceptors, so if the request fails it redirects to login
+     */
+    http.interceptors.response.use(undefined, () => {
+      return new Promise(() => {
+        removeToken();
+        this.$router.push({ name: "login" });
+        // reject(error);
+      });
+    });
+  }
+};
+</script>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-html, body, #app {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+html,
+body,
+#app {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   height: 100%;
   width: 100%;
 }

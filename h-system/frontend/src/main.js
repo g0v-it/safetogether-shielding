@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
+import http from './util/http.js'
 import { getToken } from "./util/auth.js";
 
 
-// Init axios defaults
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL || "http://localhost:8080";
+// Init axios token
 const token = getToken();
+console.log(token)
 if (token) {
-  axios.defaults.headers.common['Authorization'] = token
+  http.defaults.headers.common['Authorization'] = token;
 }
 
 

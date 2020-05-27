@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { authenticateUser } from "../util/auth";
+import { authenticateUser } from "../util/auth.js";
 export default {
   name: "Login",
   data() {
@@ -54,7 +54,7 @@ export default {
       const { username, password } = this;
       authenticateUser({ username, password })
         .then(() => {
-          this.$router.push({ name: "Dashboard" });
+          this.$router.push({ name: "dashboard" });
         })
         .catch(() => (this.isSuccess = false));
     }
