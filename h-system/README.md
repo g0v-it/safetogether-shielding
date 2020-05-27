@@ -1,16 +1,38 @@
 # H-System
 POC for healthcare shielding application.
-This application provides a way for issuing and revoking immunity certificates 
+This application provides a way for issuing and revoking immunity certificates
 
 
 ## Quickstart with docker
 
 The project is shipped with a [Docker](https://docker.com) setup that makes it easy to get a containerized  environment up and running.
 
+Start the containers using:
+```
+docker-compose up
+```
+### Web app
+Open the browser at `http://localhost:8080`, you'll be presented a [login page](#Frontend) where the operator can login into the system.
+We have pre-populated the db with example data,
+try to login using the following credentials:
+```
+username: "Giovanni"
+password: "password"
+```
+you'll be redirected to the dashboard page.
 
+### Adminer
+Open the browser at `http://localhost:8081`, you'll find the dashboard of the popular database management tool: [Adminer](https://www.adminer.org/).
+Try connecting using the following credentials (leave Database field empty):
 ```
-docker-compose up -d
+System: MySQL
+Server: store
+Username: root
+Password: root
+Database:
 ```
+You'll find a db called `healthcaredb` where the information about the system is stored.
+Configuration for creating the db can be changed using the env variables int the `.env` file.
 
 ## Use case diagram
 ![Use case diagram](../docs/uml/h-system-usecase.svg)
@@ -46,9 +68,9 @@ Contains information about healthcare professionals.
 
 Contains information about issued certificates and the operator who issued them.
 
-| business_id   | tid|status |    [username](#operator) 
+| business_id   | tid|status |    [username](#operator)
 |----------|:-------------:|:-----:|:----:|
-| id of the certificate's owner | identifier of the transaction|status of the certificate| certificate's issuer 
+| id of the certificate's owner | identifier of the transaction|status of the certificate| certificate's issuer
 
 
 ### Api
@@ -56,7 +78,7 @@ Contains information about issued certificates and the operator who issued them.
 Api is a standard [node-express](https://expressjs.com/) application. It connects the store and [Dizme](https://dizme.io/) by providing a layer of abstruction between the two. It also exposes certain routes to be used by frontend.
 
 Given that this is a POC, admin functionalities (as shown in [user case digram](#use-case-diagram)) are not implemented yet, they will be in the integration with the NHS using their infructructure for the login.
-To add new operators use Adminer (check doker-compose file).
+To add new operators use [Adminer](#adminer) .
 
 The app is composed of two main components.
 1. **DataBase Interface** which exposes the following functions:
@@ -68,7 +90,7 @@ The app is composed of two main components.
     - revokeCertificate()
 
 
-2. **Dizme Interface** che espone le seguenti funzioni:
+2. **Dizme Interface** which exposes the following functions:
     - getCertificateDetail()
     - issueCertificate()
     - revokeCertificate()
