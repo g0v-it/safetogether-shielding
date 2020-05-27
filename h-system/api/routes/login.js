@@ -9,13 +9,13 @@ router.post('/', (req, res) => {
 
     const authenticationService = require('./service/Authentication');
     token = authenticationService.login(username, password, ((error, token) => {
-        if(token != null){
-            res.send(token);
-        } else {
-            res.sendStatus(401);
-        }
+        if(error || token == null) res.status(400);
+        res.sendJson({
+            error,
+            token
+        })
+        
     }));
-
 });
 
 module.exports = router;
