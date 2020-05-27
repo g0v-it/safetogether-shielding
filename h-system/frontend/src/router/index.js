@@ -1,22 +1,44 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
+import { isAuthenticated } from "@/util/auth.js";
+
+const ifAuthenticated = (to, from, next) => {
+  if (isAuthenticated()) {
+    next()
+    return
+  }
+  next('/login')
+}
+
+const ifNotAuthenticated = (to, from, next) => {
+  if (!isAuthenticated()) {
+    next()
+    return
+  }
+  next('/')
+}
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Dashboard',
+    component: Dashboard,
+    beforeEnter: ifAuthenticated
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/details',
+    name: 'Details',
+    component: () => import('../views/Details.vue'),
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue'),
+    beforeEnter: ifNotAuthenticated
   }
 ]
 
