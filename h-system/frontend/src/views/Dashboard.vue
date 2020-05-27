@@ -7,7 +7,7 @@
         <p class="mx-4" >{{cred.surname}}</p>
         <p class="mx-4" >{{formatDate(cred.timestamp)}}</p>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-auto rounded">Details</button>
-        <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 rounded">Revoke</button>
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-4 rounded">Revoke</button>
       </div>
     </div>
   </div>
