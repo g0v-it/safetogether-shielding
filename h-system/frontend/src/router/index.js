@@ -35,6 +35,12 @@ const routes = [
     beforeEnter: ifAuthenticated
   },
   {
+    path: '/revoke',
+    name: 'revoke',
+    component: () => import('../views/Revoke.vue'),
+    beforeEnter: ifAuthenticated
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/Login.vue'),

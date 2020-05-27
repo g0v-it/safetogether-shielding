@@ -1,5 +1,5 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <router-view />
   </div>
 </template>
@@ -13,11 +13,14 @@ export default {
     /**
      * Add interceptors, so if the request fails it redirects to login
      */
-    http.interceptors.response.use(undefined, () => {
-      return new Promise(() => {
-        removeToken();
-        this.$router.push({ name: "login" });
-        // reject(error);
+    http.interceptors.response.use(undefined, error => {
+      return new Promise((resolve, reject) => {
+        // console.log({...error})
+        if (error?.config?.url != "login") {
+          removeToken();
+          this.$router.push({ name: "login" });
+        }
+        reject(error);
       });
     });
   }
