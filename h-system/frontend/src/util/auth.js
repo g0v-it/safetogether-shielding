@@ -31,6 +31,7 @@ export function authenticateUser(user) {
                 resolve(res);
             })
             .catch(err => {
+                console.log(err)
                 removeToken();
                 reject(err);
             })

@@ -4,11 +4,11 @@ services:
     build: ./store
     ports:
       - 3306:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=healthcaredb
-      - MYSQL_USER=healthcareapi
-      - MYSQL_PASSWORD=12344
+    # environment:
+      # - MYSQL_ROOT_PASSWORD=root
+      # - MYSQL_DATABASE=healthcaredb
+      # - MYSQL_USER=healthcareapi
+      # - MYSQL_PASSWORD=12344
 
   adminer:
     image: adminer
@@ -23,17 +23,17 @@ services:
 #     # depends_on:
 #     #   - store
 #     environment:
-#       - MYSQL_HOST=""
+#       - MYSQL_HOST=localhost
 #       - MYSQL_DATABASE=healthcaredb
-#       - MYSQL_USER=healthcareapi
-#       - MYSQL_PASSWORD=1234
+#       - MYSQL_USER=root
+#       - MYSQL_PASSWORD=root
 
 # # for passing env varibile in build see note at https://docs.docker.com/compose/compose-file/#environment
 #   frontend:
 #     build:
 #       context: ./frontend
 #       args:
-#         - API_ENDPOINT=http://192.168.1.104:443
+#         - API_ENDPOINT=http://localhost:8082
 #     ports:
 #       - 8080:80
 #     depends_on:
