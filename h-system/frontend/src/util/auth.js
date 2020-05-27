@@ -1,4 +1,6 @@
-import axios from "axios";
+import http from "./http.js";
+
+const tokenStorageKey = 'user-token';
 
 export function isAuthenticated() {
     const token = getToken();
@@ -6,29 +8,36 @@ export function isAuthenticated() {
 }
 
 export function getToken() {
-    return localStorage.getItem('user-token') || '';
+    return localStorage.getItem(tokenStorageKey) || '';
 }
 
 export function setToken(token) {
-    localStorage.setItem('user-token', token);
+    localStorage.setItem(tokenStorageKey, token);
 }
 
 export function removeToken() {
-    localStorage.removeItem('user-token');
+    localStorage.removeItem(tokenStorageKey);
 }
 
-export const authenticateUser = user => new Promise((resolve, reject) => {
-    console.log(user);
-    axios({ url: 'login', data: user, method: 'POST' })
-        .then(res => {
-            const token = res.data;
-            console.log(`Bearer ${token}`)
-            setToken(token);
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            resolve(res);
-        })
-        .catch(err => {
-            removeToken();
-            reject(err);
-        })
-})
+export function authenticateUser(user) {
+    return new Promise((resolve, reject) => {
+        console.log(user);
+        http({ url: 'login', data: user, method: 'POST' })
+            .then(res => {
+                const token = `Bearer ${res.data}`;
+                console.log(`Bearer ${token}`)
+                setToken(token);
+                http.defaults.headers.common['Authorization'] = token;
+                resolve(res);
+            })
+            .catch(err => {
+                removeToken();
+                reject(err);
+            })
+    })
+}
+
+export function logoutUser() {
+    delete http.defaults.headers.common['Authorization'];
+    removeToken();
+}

@@ -24,19 +24,19 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
+    name: 'dashboard',
     component: Dashboard,
     beforeEnter: ifAuthenticated
   },
   {
     path: '/details',
-    name: 'Details',
+    name: 'details',
     component: () => import('../views/Details.vue'),
     beforeEnter: ifAuthenticated
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import('../views/Login.vue'),
     beforeEnter: ifNotAuthenticated
   }
