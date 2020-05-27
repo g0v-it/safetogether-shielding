@@ -20,7 +20,7 @@ CREATE TABLE Certificate (
 	token_user VARCHAR(20) NOT NULL,
 	t_id VARCHAR(40) NOT NULL,
 	operator VARCHAR(20) NOT NULL,
-	status ENUM('active','disabled')
+	status ENUM('active','disabled'),
 	PRIMARY KEY (token_user,t_id),
 	FOREIGN KEY (operator) REFERENCES Operator(username)
 );
