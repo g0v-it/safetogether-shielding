@@ -20,6 +20,7 @@ module.exports = class Operator {
     static query(query){
         return new Promise((resolve, reject) => {
             connection.query(query, (error, results, fields) => {
+                connection.destroy();
                 if(error || results.length == 0)
                     reject(error);
                 resolve(results);
