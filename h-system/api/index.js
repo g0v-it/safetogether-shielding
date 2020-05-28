@@ -11,4 +11,12 @@ app.get('/certificates', (req, res) => {
         ekkle: "complimenti ti sei connesso"
     });
 });
+
+app.post('/verification/verify/confirm', (req,res)=>{
+    console.log(req.body);
+
+});
+
+
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

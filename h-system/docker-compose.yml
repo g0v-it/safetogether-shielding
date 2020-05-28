@@ -23,7 +23,7 @@ services:
     environment:
       - MYSQL_HOST=store
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      -  MYSQL_USER=${MYSQL_USER}
+      - M\YSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 # # for passing env varibile at build stage, see note at https://docs.docker.com/compose/compose-file/#environment
