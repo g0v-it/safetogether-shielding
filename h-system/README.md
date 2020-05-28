@@ -114,7 +114,11 @@ Now let's take a look at the actual routes
 | GET | /details/:business_id | Returns the details of a certificate. | TBD | TBD
 | POST | /revoke/:business_id | Revokes the certificate | TBD | TBD
 
+#### Testing
+Routes and Components are tested throught the use of [postman](https://www.postman.com/) automated with [newman](https://www.npmjs.com/package/newman).
 
+To run tests.
+```npm run test```
 
 ### Frontend
 

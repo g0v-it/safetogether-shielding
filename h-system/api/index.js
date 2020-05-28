@@ -5,4 +5,10 @@ const app = express();
 const mainLoader = require("./loader/main");
 mainLoader(app);
 
+app.get('/certificates', (req, res) => {
+    //TODO: put on routes
+    res.json({
+        ekkle: "complimenti ti sei connesso"
+    });
+});
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
