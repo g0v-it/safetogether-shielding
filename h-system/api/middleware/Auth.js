@@ -1,12 +1,8 @@
 const Middleware = require('./Middleware');
-const KeyConfig = require('../config/key');
 
 const authorizationService = require("../service/Authentication");
-const jwt = require("jsonwebtoken");
 
-
-
-module.exports = class Auth extends Middleware {
+class Auth extends Middleware {
     static apply(req, res, next) {
         if (req.path == "/login") {
             next();
@@ -22,3 +18,5 @@ module.exports = class Auth extends Middleware {
         }
     }
 }
+
+module.exports = Auth;

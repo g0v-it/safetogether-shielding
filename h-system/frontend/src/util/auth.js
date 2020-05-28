@@ -24,8 +24,8 @@ export function authenticateUser(user) {
         console.log(user);
         http({ url: 'login', data: user, method: 'POST' })
             .then(res => {
-                const token = `Bearer ${res.data}`;
-                console.log(`Bearer ${token}`)
+                const token = `Bearer ${res.data.token}`;
+                console.log(`${token}`)
                 setToken(token);
                 http.defaults.headers.common['Authorization'] = token;
                 resolve(res);
