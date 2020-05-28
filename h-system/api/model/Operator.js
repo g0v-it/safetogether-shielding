@@ -1,5 +1,3 @@
-const connection = require("./db");
-
 module.exports = class Operator {
     static isInDB(username, password, callback){
         let results;
@@ -10,7 +8,7 @@ module.exports = class Operator {
         `;
 
         this.query(query).then(result => {
-            callback(null, true);
+            callback(null, result);
         }).catch(error => {
             callback(error, false);
         });
@@ -19,12 +17,34 @@ module.exports = class Operator {
 
     static query(query){
         return new Promise((resolve, reject) => {
-            connection.query(query, (error, results, fields) => {
-                connection.destroy();
-                if(error || results.length == 0)
-                    reject(error);
-                resolve(results);
-            });
+            const mariadb = require('mariadb');
+            const dbConfig = require('../config/db');
+            
+            mariadb.createConnection({              
+                host     : dbConfig.host,
+                user     : dbConfig.user,
+                password : dbConfig.password,
+                database : dbConfig.database})
+              .then(conn => {
+                  conn.query(query, [2])
+                  .then(rows => {
+                    conn.end();
+                    if(rows.length > 0){
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                  })
+                  .catch(err => { 
+                    reject(false);
+                  });
+              })
+              .catch(err => {
+                reject(false);
+              })
+
+
+    
         });
     }
 }
