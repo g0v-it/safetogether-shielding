@@ -3,10 +3,10 @@ services:
   store:
     build: ./store
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: healthcaredb
+      MYSQL_USER: healthcareapi
+      MYSQL_PASSWORD: 12344
 
   adminer:
     image: adminer
@@ -21,10 +21,10 @@ services:
     depends_on:
       - store
     environment:
-      - MYSQL_HOST=store
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - M\YSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      MYSQL_HOST: store
+      MYSQL_DATABASE: healthcaredb
+      MYSQL_USER: healthcareapi
+      MYSQL_PASSWORD: 12344
 
 # # for passing env varibile at build stage, see note at https://docs.docker.com/compose/compose-file/#environment
   frontend:
