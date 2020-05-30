@@ -1,11 +1,10 @@
 # staysafe-shielding
-Covid-19 StaySafe shielding project
+Covid-19 StaySafe shielding project. 
+This project implements a POC for [this journey](https://www.powtoon.com/c/f2AjuQcsqg0/1/m).
 
 See Personas & user stories in https://safe-together.github.io/specification/stories/
 
 See the general architecture requirements in https://safe-together.github.io/specification/protocol#shielding-system
-
-This project implements a POC of [this journey](https://www.powtoon.com/c/f2AjuQcsqg0/1/m).
 
 The main components of the Shielding System are summarized in following  picture:
 
