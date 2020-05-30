@@ -37,9 +37,11 @@
   </div>
 </template>
 
-<script>
-import { authenticateUser } from "../util/auth.js";
-export default {
+<script lang="ts">
+import Vue from "vue";
+import { authenticateUser } from "@/util/auth";
+
+export default Vue.extend({
   name: "Login",
   data() {
     return {
@@ -59,5 +61,5 @@ export default {
         .catch(() => (this.isSuccess = false));
     }
   }
-};
+});
 </script>

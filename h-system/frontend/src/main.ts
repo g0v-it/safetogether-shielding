@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import http from './util/http.js'
-import { getToken } from "./util/auth.js";
+import http from '@/util/http'
+import { getToken } from "@/util/auth";
 
 
 // Init axios token

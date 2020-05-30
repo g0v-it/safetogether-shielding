@@ -4,11 +4,12 @@
   </div>
 </template>
 
-<script>
-import http from "./util/http.js";
-import { removeToken } from "./util/auth.js";
+<script lang="ts">
+import Vue from "vue";
+import http from "@/util/http";
+import { removeToken } from "@/util/auth";
 
-export default {
+export default Vue.extend({
   created() {
     /**
      * Add interceptors, so if the request fails it redirects to login
@@ -24,7 +25,7 @@ export default {
       });
     });
   }
-};
+});
 </script>
 
 <style>

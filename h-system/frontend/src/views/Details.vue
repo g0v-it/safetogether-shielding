@@ -4,11 +4,12 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
   name: "Details",
   mounted() {
     // http.get("unauth").then(res => console.log(res.data));
   }
-};
+});
 </script>

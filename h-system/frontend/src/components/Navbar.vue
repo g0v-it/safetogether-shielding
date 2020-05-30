@@ -14,10 +14,11 @@
   </nav>
 </template>
 
-<script>
-import { logoutUser } from "../util/auth.js";
+<script lang="ts">
+import Vue from "vue";
+import { logoutUser } from "@/util/auth";
 
-export default {
+export default Vue.extend({
   name: "Navbar",
   methods: {
     logout() {
@@ -25,5 +26,5 @@ export default {
       this.$router.push({ name: "login" });
     }
   }
-};
+});
 </script>

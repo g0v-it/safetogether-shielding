@@ -2,22 +2,33 @@
   <div class="dashboard">
     <Navbar />
     <div class="flex flex-col mx-8 my-6">
-      <div class="flex flex-wrap items-center justify-between p-3 h-16" v-for="cred in credentials" :key="cred.name">
+      <div
+        class="flex flex-wrap items-center justify-between p-3 h-16"
+        v-for="cred in credentials"
+        :key="cred.name"
+      >
         <p class="mx-4">{{cred.name}}</p>
-        <p class="mx-4" >{{cred.surname}}</p>
-        <p class="mx-4" >{{formatDate(cred.timestamp)}}</p>
-        <button @click="$router.push({name:'details'})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-auto rounded">Details</button>
-        <button @click="$router.push({name:'revoke'})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-4 rounded">Revoke</button>
+        <p class="mx-4">{{cred.surname}}</p>
+        <p class="mx-4">{{formatDate(cred.timestamp)}}</p>
+        <button
+          @click="$router.push({name:'details'})"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-auto rounded"
+        >Details</button>
+        <button
+          @click="$router.push({name:'revoke'})"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-4 rounded"
+        >Revoke</button>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import Navbar from "@/components/Navbar.vue";
-import credentials from "../util/credentials.js";
+import credentials from "@/util/credentials";
 
-export default {
+export default Vue.extend({
   name: "Dashboard",
   data() {
     return {
@@ -28,11 +39,11 @@ export default {
     Navbar
   },
   methods: {
-    formatDate(date) {
+    formatDate(date: Date) {
       return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
     }
   }
-};
+});
 </script>
 
 <style scoped>

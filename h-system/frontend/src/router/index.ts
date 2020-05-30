@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter, { RouteConfig, Route } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-import { isAuthenticated } from "@/util/auth.js";
+import { isAuthenticated } from "@/util/auth.ts";
 
-const ifAuthenticated = (to, from, next) => {
+const ifAuthenticated = (to: Route, from: Route, next: Function) => {
   if (isAuthenticated()) {
     next()
     return
@@ -11,7 +11,7 @@ const ifAuthenticated = (to, from, next) => {
   next('/login')
 }
 
-const ifNotAuthenticated = (to, from, next) => {
+const ifNotAuthenticated = (to: Route, from: Route, next: Function) => {
   if (!isAuthenticated()) {
     next()
     return
@@ -21,7 +21,7 @@ const ifNotAuthenticated = (to, from, next) => {
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'dashboard',
