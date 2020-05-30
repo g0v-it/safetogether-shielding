@@ -4,7 +4,7 @@ This project implements a POC for [this journey](https://www.powtoon.com/c/f2Aju
 
 See Personas & user stories in https://safe-together.github.io/specification/stories/
 
-See the general architecture requirements in https://safe-together.github.io/specification/protocol#shielding-system
+See the general architecture requirements in https://safe-together.github.io/specification/protocols#shielding-system
 
 The main components of the Shielding System are summarized in following  picture:
 
