@@ -1,21 +1,17 @@
 const express = require('express');
-const port = 80;
+const apiRouter = require('./routers/api')
+const dizmeRouter = require('./routers/dizme')
+
+const port = 8082;
 const app = express();
 
-const mainLoader = require("./loader/main");
-mainLoader(app);
 
-app.get('/certificates', (req, res) => {
-    //TODO: put on routes
-    res.json({
-        ekkle: "complimenti ti sei connesso"
-    });
-});
+// for parsing application/json
+app.use(express.json())
 
-app.post('/verification/verify/confirm', (req,res)=>{
-    console.log(req.body);
-
-});
+// routes
+app.use('/', dizmeRouter);
+app.use('/api', apiRouter);
 
 
 

@@ -24,8 +24,10 @@ app.post('/api/v1/verification/verify/confirm', (req, res) => {
         message_code: 0,
         message: "ok",
         action: {
+            // operation_type: "NO_ACTION",
             operation_type: "ISSUE_CREDENTIAL",
-            credential_names: ["CPVolunteer"]
+            // credential_names: ["CPVolunteer"]
+            credential_names: ["CovidImmunity"]
         },
         user_token: "user id creato da noi",
         result: true
@@ -37,15 +39,16 @@ app.post('/api/v1/owners/credential/values_for_credential', (req, res) => {
         status_code: 100,
         message_code: 0,
         message: "OK",
-        credential_name: "CPVolunteer",
+        credential_name: "CovidImmunity",
         credential_values: {
             name: "Mohd",
             surname: "Miah",
             birthdate: "10/10/1998",
             birthplace: "Napoli",
             timestamp: Date.now().toString(),
-            department: "MI 3",
-            location: "Milano"
+            status: "immune"
+            // department: "MI 3",
+            // location: "Milano"
         }
     })
 })

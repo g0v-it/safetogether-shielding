@@ -16,6 +16,13 @@ CREATE TABLE Operator (
 	FOREIGN KEY (facility) REFERENCES Facility(code)
 );
 
+CREATE TABLE User (
+	username VARCHAR(64) NOT NULL,
+	mail VARCHAR(64) NOT NULL,
+	PRIMARY KEY (mail)
+);
+
+
 CREATE TABLE Certificate (
 	token_user VARCHAR(20) NOT NULL,
 	t_id VARCHAR(40) NOT NULL,
@@ -26,7 +33,7 @@ CREATE TABLE Certificate (
 );
 
 
-INSERT INTO Operator (username,password,role) VALUES(
+INSERT INTO Operator (username, password, role) VALUES(
     "Giovanni",
     "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
     "admin"
