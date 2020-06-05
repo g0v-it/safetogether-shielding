@@ -1,6 +1,7 @@
 const db = require('../service/database')
 
 module.exports = {
+
     isInDB: async (requestUID) => {
         const q = `
         SELECT * FROM Certificate
@@ -9,6 +10,10 @@ module.exports = {
 
         return (await db.query(q)).length > 0;
     },
+
+
+
+
     save: async (certificate) => {
         const { name,
             surname,
@@ -19,14 +24,19 @@ module.exports = {
             requestUID,
             operator,
             email } = certificate;
-        console.log('save', timestamp);
+
+
         const insertQuery = `
             INSERT INTO Certificate (user_token, request_uid, operator, name, surname, birthdate, birthplace, covid_status, req_timestamp)
             VALUES ("${email}", "${requestUID}", "${operator}", "${name}", "${surname}", "${birthdate}", "${birthplace}","${status}", ${timestamp})
         `;
-        console.log('q', insertQuery);
+
         await db.query(insertQuery)
     },
+
+
+
+
     get: async (requestUID) => {
         const q = `
             SELECT user_token, request_uid, operator, name, surname, birthdate, birthplace, covid_status, req_timestamp
@@ -35,6 +45,10 @@ module.exports = {
         `;
         return await db.query(q);
     },
+
+
+
+
 
     allFrom: async (operator) => {
         const q = `

@@ -14,6 +14,8 @@ const router = express.Router();
 // Cors only for apis
 router.use(cors)
 
+
+
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -33,6 +35,8 @@ router.post('/login', async (req, res) => {
 
 
 
+
+
 router.get('/widget/:requestUID', async (req, res) => {
     const requestUID = req.params.requestUID;
     try {
@@ -43,6 +47,9 @@ router.get('/widget/:requestUID', async (req, res) => {
     }
     res.status(404).end();
 })
+
+
+
 
 
 router.post('/issue', auth, async (req, res) => {
@@ -69,6 +76,9 @@ router.post('/issue', auth, async (req, res) => {
 })
 
 
+
+
+
 router.get('/certificates', auth, async (req, res) => {
     let rows;
     try {
@@ -88,6 +98,7 @@ router.get('/certificates', auth, async (req, res) => {
     }
     res.json(rows);
 })
+
 
 
 
