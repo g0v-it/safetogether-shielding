@@ -1,15 +1,17 @@
 const express = require('express');
 const crypto = require('crypto')
 
-const auth = require('../middleware/Auth').apply
-const cors = require('../middleware/Cors').apply
+const auth = require('../middleware/Auth').apply;
+const cors = require('../middleware/Cors').apply;
 
 const authenticationService = require('../service/Authentication');
 const OperatorModel = require("../model/Operator");
-const UserModel = require('../model/User')
+const UserModel = require('../model/User');
+const CertificateModel = require('../model/Certificate');
 
 
 const router = express.Router();
+// Cors only for apis
 router.use(cors)
 
 router.post('/login', async (req, res) => {
@@ -21,7 +23,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const token = await authenticationService.authenticate(username);
+        const token = authenticationService.authenticate(username);
         res.json({ token })
 
     } catch (error) {
@@ -30,30 +32,62 @@ router.post('/login', async (req, res) => {
 });
 
 
-// Temporaneamente salvo qui, dopo sarà nel db
-const credential = []
+
+router.get('/widget/:requestUID', async (req, res) => {
+    const requestUID = req.params.requestUID;
+    try {
+        if (await CertificateModel.isInDB(requestUID))
+            res.render('widget', { requestUID }).end();
+    } catch (error) {
+        res.status(400).end()
+    }
+    res.status(404).end();
+})
+
 
 router.post('/issue', auth, async (req, res) => {
     const { name,
         surname,
         birthdate,
         birthplace,
-        timestamp,
         status,
         username,
         email } = req.body;
 
-    const requestUID = crypto.randomBytes(8).toString('hex');
+    const requestUID = crypto.randomBytes(3).toString('hex');
 
     try {
+        const operator = authenticationService.getPayload(req.headers['authorization']).username;
         await UserModel.save(username, email)
+        await CertificateModel.save({ name, surname, birthdate, birthplace, status, email, requestUID, operator, timestamp: Date.now() })
+
     } catch (error) {
         res.status(400).end();
+        return;
     }
-    credential.push({ name, surname, birthdate, birthplace, timestamp, status, requestUID })
-    res.render('widget', { requestUID });
+    res.json(requestUID);
 })
 
+
+router.get('/certificates', auth, async (req, res) => {
+    let rows;
+    try {
+        const operator = authenticationService.getPayload(req.headers['authorization']).username;
+        rows = (await CertificateModel.allFrom(operator)).map(r => ({
+            name: r.name,
+            surname: r.surname,
+            birthdate: r.birthdate,
+            birthplace: r.birthplace,
+            status: r.covid_status,
+            timestamp:r.req_timestamp
+        }));
+
+    } catch (error) {
+        res.status(400).end();
+        return;
+    }
+    res.json(rows);
+})
 
 
 

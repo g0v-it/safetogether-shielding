@@ -4,10 +4,17 @@ const KeyConfig = require('../config/key');
 
 
 module.exports = class Authentication {
-    static async authenticate(username) {
+    static authenticate(username) {
         return jwt.sign({ username }, KeyConfig.private, { expiresIn: '1h' });
     }
 
+    static getPayload(authorization) {
+        let token = this.getToken(authorization)
+        try {
+            return jwt.verify(token, KeyConfig.private);
+        }
+        catch (error) { return null; }
+    }
 
     static isLogged(authorization) {
         let isLogged;
@@ -16,7 +23,7 @@ module.exports = class Authentication {
         try {
             token = jwt.verify(token, KeyConfig.private);
             isLogged = token !== undefined && token !== null;
-
+            //TODO bisognerebbe controllare che effettivamente sia nel db l'operatore
         } catch (err) {
             isLogged = false;
         }

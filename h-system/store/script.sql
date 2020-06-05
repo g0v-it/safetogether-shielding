@@ -24,12 +24,21 @@ CREATE TABLE User (
 
 
 CREATE TABLE Certificate (
-	token_user VARCHAR(20) NOT NULL,
-	t_id VARCHAR(40) NOT NULL,
+	user_token VARCHAR(64) NOT NULL,
+	request_uid VARCHAR(64) NOT NULL,
 	operator VARCHAR(20) NOT NULL,
-	status ENUM('active','disabled'),
-	PRIMARY KEY (token_user,t_id),
-	FOREIGN KEY (operator) REFERENCES Operator(username)
+
+	name VARCHAR(64),
+	surname VARCHAR(64),
+	birthdate VARCHAR(64),
+	birthplace VARCHAR(64),
+	req_timestamp BIGINT(20),
+	covid_status ENUM('healthy','sick'),
+
+	t_id VARCHAR(64),
+	PRIMARY KEY (user_token,request_uid),
+	FOREIGN KEY (operator) REFERENCES Operator(username),
+	FOREIGN KEY (user_token) REFERENCES User(mail)
 );
 
 

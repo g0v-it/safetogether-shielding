@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 
 // routes
 app.use('/', dizmeRouter);
-app.use('/api', apiRouter);
+app.use('/web', apiRouter);
 
 
 

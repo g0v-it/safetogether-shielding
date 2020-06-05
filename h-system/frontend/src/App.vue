@@ -16,7 +16,7 @@ export default Vue.extend({
      */
     http.interceptors.response.use(undefined, error => {
       return new Promise((resolve, reject) => {
-        // console.log({...error})
+        console.log({...error})
         if (error?.config?.url != "login") {
           removeToken();
           this.$router.push({ name: "login" });

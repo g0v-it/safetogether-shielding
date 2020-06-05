@@ -5,7 +5,6 @@ const authorizationService = require("../service/Authentication");
 class Auth extends Middleware {
     static apply(req, res, next) {
         const authorization = req.headers['authorization'];
-
         if(authorizationService.isLogged(authorization)){
             next();
         } else{

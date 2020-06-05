@@ -1,50 +1,63 @@
 <template>
   <div class="dashboard">
     <Navbar />
+    <div v-if="reqOK" class="alert alert-success" role="alert">
+      Request accepted, visit
+      <a
+        :href="formatURL()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="alert-link"
+      >{{formatURL()}}</a>
+      to scan the QRcode.
+      <button
+        @click="clear"
+        type="button"
+        class="close"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <div class="container py-5">
       <form @submit.prevent="submit">
         <div class="form-group">
           <label for="exampleInputEmail1">Dizme username</label>
-          <input v-model="username" type="text" class="form-control" />
+          <input v-model="certificate.username" type="text" class="form-control" />
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Dizme email</label>
-          <input v-model="email" type="email" class="form-control" />
+          <input v-model="certificate.email" type="email" class="form-control" />
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Name</label>
-          <input v-model="name" type="text" class="form-control" />
+          <input v-model="certificate.name" type="text" class="form-control" />
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Surname</label>
-          <input v-model="surname" type="text" class="form-control" />
+          <input v-model="certificate.surname" type="text" class="form-control" />
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Birthdate</label>
-          <input v-model="birthdate" type="date" class="form-control" />
+          <input v-model="certificate.birthdate" type="date" class="form-control" />
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Birthplace</label>
-          <input v-model="birthplace" type="text" class="form-control" />
+          <input v-model="certificate.birthplace" type="text" class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Covid status</label>
-          <input v-model="status" type="text" class="form-control" />
+          <select v-model="certificate.status" class="form-control">
+            <option>healthy</option>
+            <option>sick</option>
+          </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Issue</button>
+        <button type="submit" class="btn btn-primary mr-4">Issue</button>
       </form>
     </div>
   </div>
-  <!-- { name,
-        surname,
-        birthdate,
-        birthplace,
-        timestamp,
-        status,
-        username,
-  email }-->
 </template>
 
 
@@ -53,60 +66,54 @@
 import Vue from "vue";
 import Navbar from "@/components/Navbar.vue";
 import http from "../util/http";
+import config from "../config";
 
 export default Vue.extend({
-  name: "Login",
+  name: "Issue",
   components: {
     Navbar
   },
+  props: {
+    name: String,
+    surname: String,
+    birthdate: String,
+    birthplace: String
+  },
   data() {
     return {
-      name: "",
-      surname: "",
-      birthdate: "",
-      birthplace: "",
-      timestamp: Date.now(),
-      status: "",
-      username: "",
-      email: ""
+      certificate: {
+        name: this.name || "",
+        surname: this.surname || "",
+        birthdate: this.birthdate || "",
+        birthplace: this.birthplace || "",
+        status: "",
+        username: "",
+        email: ""
+      },
+      reqOK: false,
+      requestUID: "",
+      apiEndpoint: config.apiEndpoint
     };
   },
   methods: {
     submit() {
-      const {
-        name,
-        surname,
-        birthdate,
-        birthplace,
-        timestamp,
-        status,
-        username,
-        email
-      } = this;
-      console.log("issue", {
-        name,
-        surname,
-        birthdate,
-        birthplace,
-        timestamp,
-        status,
-        username,
-        email
+      http.post("/issue", { ...this.certificate }).then(res => {
+        this.requestUID = res.data;
+        this.reqOK = true;
       });
-      http
-        .post("/issue", {
-          name,
-          surname,
-          birthdate,
-          birthplace,
-          timestamp,
-          status,
-          username,
-          email
-        })
-        .then(res => {
-          console.log(res.data);
-        });
+    },
+    formatURL() {
+      return `${this.apiEndpoint}/widget/${this.requestUID}`;
+    },
+    clear() {
+      this.reqOK = false;
+      this.certificate.name = "";
+      this.certificate.surname = "";
+      this.certificate.birthdate = "";
+      this.certificate.birthplace = "";
+      this.certificate.status = "";
+      this.certificate.username = "";
+      this.certificate.email = "";
     }
   }
 });

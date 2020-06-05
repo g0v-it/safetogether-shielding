@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand">H-System</a>
+    <a href="#" @click="$router.push({name:'dashboard'})" class="navbar-brand">H-System</a>
     <div class="d-flex">
       <button @click="$router.push({name:'issue'})" class="btn btn-primary mr-3">New certificate</button>
       <button @click="logout" class="btn btn-outline-secondary">Logout</button>
