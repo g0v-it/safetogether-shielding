@@ -3,7 +3,7 @@ POC for healthcare shielding application.
 This application provides a way for issuing and revoking immunity certificates
 
 
-## Quickstart with docker
+## Quickstart
 
 The project is shipped with a [Docker](https://docker.com) setup that makes it easy to get a containerized  environment up and running.
 
@@ -11,6 +11,7 @@ Start the containers using:
 ```
 docker-compose up
 ```
+
 ### Web app
 Open the browser at `http://localhost:8080`, you'll be presented a [login page](#Frontend) where the operator can login into the system.
 We have pre-populated the db with example data,
@@ -32,7 +33,16 @@ Password: root
 Database:
 ```
 You'll find a db called `healthcaredb` where the information about the system is stored.
-Configuration for creating the db can be changed using the env variables int the `.env` file.
+Configuration for creating the db can be changed using the env variables in the `docker-compose.yml` file.
+
+### Issue a credential
+You may have noted that you can't yet issue a credential,
+this is because you need to tunnel your local web-server in order to communicate with the Dizme Agent.
+In e separate console run:
+```
+ngrok http -subdomain=hsystemshielding 8082
+```
+**Now you are ready. Try issuing a credential.**
 
 ## Use case diagram
 ![Use case diagram](../docs/uml/h-system-usecase.svg)
@@ -107,7 +117,7 @@ Now let's take a look at the actual routes
 
 
 | METHOD   |   Route |  Description | Request   |     Response
-|:----------|:-----------|:-------|:----------:|:---------
+|:----------|:-----------|:-------|:----------|:---------
 | POST | /login | Login service provided by | ```{username, password}``` | ```{error, token}```
 | GET | /certificates | List of issued certificates by the logged in operator. | TBD | TBD
 | POST | /issue | Fires up the process of issuing an immunity certification according to the predefined schema. | TBD | TBD
