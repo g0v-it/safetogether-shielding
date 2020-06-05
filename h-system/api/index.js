@@ -2,12 +2,14 @@ const express = require('express');
 const apiRouter = require('./routers/api')
 const dizmeRouter = require('./routers/dizme')
 
-const port = 8082;
+const port = 80;
 const app = express();
 
 
 // for parsing application/json
 app.use(express.json())
+
+app.set('view engine', 'ejs')
 
 // routes
 app.use('/', dizmeRouter);

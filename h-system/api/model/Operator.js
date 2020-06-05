@@ -7,6 +7,6 @@ module.exports = {
         where username='${username}' and
             password = SHA2('${password}', 256)
         `;
-        return await db.query(query);
+        return (await db.query(query)).length > 0;
     }
 }

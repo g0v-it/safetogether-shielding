@@ -11,8 +11,8 @@ const pool = mariadb.createPool({
 module.exports = {
     query: async (query) => {
         const conn = await pool.getConnection();
-        const rows = await conn.query(query);
+        const rows = await conn.query({ rowsAsArray: true, sql: query });
         conn.release();
-        return rows.length > 0;
+        return rows;
     }
 }
