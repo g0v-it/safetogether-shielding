@@ -1,39 +1,19 @@
 <template>
-  <div class="flex items-center justify-center w-full h-full">
-    <div class="w-full max-w-xs">
-      <form @submit.prevent="login" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div v-if="!isSuccess" class="mb-4">
-          <p class="text-red-500 text-xs italic">Incorrect credentials</p>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
-          <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            v-model="username"
-            type="text"
-            placeholder="Username"
-          />
-        </div>
-        <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-          <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            v-model="password"
-            type="password"
-            placeholder="******************"
-          />
-        </div>
-        <div class="flex justify-center">
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >Sign In</button>
-        </div>
-      </form>
-    </div>
+  <div class="container d-flex align-items-center justify-content-center">
+    <form @submit.prevent="login">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input v-model="username" type="text" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input v-model="password" type="password" class="form-control" />
+      </div>
+      <div v-if="!isSuccess" class="form-group">
+        <small class="form-text text-danger">Incorrect credentials</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
   </div>
 </template>
 
@@ -63,3 +43,9 @@ export default Vue.extend({
   }
 });
 </script>
+
+<style scoped>
+.container {
+  height: 100%;
+}
+</style>
