@@ -12,14 +12,15 @@ module.exports = {
     },
 
 
-
+    // ["name", "surname", "birthdate", "birthplace", "timestamp", "department", "location"]
 
     save: async (certificate) => {
         const { name,
             surname,
             birthdate,
             birthplace,
-            status,
+            department,
+            location,
             timestamp,
             requestUID,
             operator,
@@ -27,8 +28,8 @@ module.exports = {
 
 
         const insertQuery = `
-            INSERT INTO Certificate (user_token, request_uid, operator, name, surname, birthdate, birthplace, covid_status, req_timestamp)
-            VALUES ("${email}", "${requestUID}", "${operator}", "${name}", "${surname}", "${birthdate}", "${birthplace}","${status}", ${timestamp})
+            INSERT INTO Certificate (user_token, request_uid, operator, name, surname, birthdate, birthplace, location, department, req_timestamp)
+            VALUES ("${email}", "${requestUID}", "${operator}", "${name}", "${surname}", "${birthdate}", "${birthplace}", "${location}", "${department}", ${timestamp})
         `;
 
         await db.query(insertQuery)
@@ -39,7 +40,7 @@ module.exports = {
 
     get: async (requestUID) => {
         const q = `
-            SELECT user_token, request_uid, operator, name, surname, birthdate, birthplace, covid_status, req_timestamp
+            SELECT *
             FROM Certificate
             WHERE request_uid='${requestUID}'
         `;

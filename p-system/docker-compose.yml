@@ -4,12 +4,12 @@ services:
     build: ./store
     ports:
       - 3306:3306
-    volumes:
-      - "dbdata:/var/lib/mysql"
+    # volumes:
+    #   - "dbdata:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: healthcaredb
-      MYSQL_USER: healthcareapi
+      MYSQL_DATABASE: psystemdb
+      MYSQL_USER: psystemapi
       MYSQL_PASSWORD: 12344
 
   adminer:
@@ -26,8 +26,8 @@ services:
       - store
     environment:
       MYSQL_HOST: store
-      MYSQL_DATABASE: healthcaredb
-      MYSQL_USER: healthcareapi
+      MYSQL_DATABASE: psystemdb
+      MYSQL_USER: psystemapi
       MYSQL_PASSWORD: 12344
 
 # for passing env varibile at build stage, see note at https://docs.docker.com/compose/compose-file/#environment
