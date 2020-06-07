@@ -8,7 +8,7 @@
         <p class="col">{{formatDate(new Date(cred.timestamp))}}</p>
         <div class="col d-flex justify-content-around">
           <button
-            @click="$router.push({name:'issue', params:{...cred}})"
+            @click="$router.push({name:'issue', query:{...cred}})"
             class="btn btn-outline-primary"
           >Duplicate</button>
           <button @click="$router.push({name:'revoke'})" class="btn btn-outline-danger">Revoke</button>

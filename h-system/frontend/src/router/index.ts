@@ -32,7 +32,12 @@ const routes: Array<RouteConfig> = [
     path: '/issue/:name?/:surname?/:birthdate?/:birthplace?',
     name: 'issue',
     component: () => import('../views/Issue.vue'),
-    props: true,
+    props: (route) => ({
+      name: route.query.name,
+      surname: route.query.surname,
+      birthdate: route.query.birthdate,
+      birthplace: route.query.birthplace,
+    }),
     beforeEnter: ifAuthenticated
   },
   {
