@@ -50,7 +50,7 @@ router.get('/widget/:requestUID', async (req, res) => {
 
 
 
-//  ["name", "surname", "birthdate", "birthplace", "timestamp", "department", "location"]
+
 
 router.post('/issue', auth, async (req, res) => {
     const { name,

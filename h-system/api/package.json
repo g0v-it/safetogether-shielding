@@ -16,7 +16,7 @@
     "mariadb": "^2.4.0"
   },
   "devDependencies": {
-    "newman": "^5.0.1",
+    "newman": "^5.1.0",
     "nodemon": "^2.0.4"
   }
 }
