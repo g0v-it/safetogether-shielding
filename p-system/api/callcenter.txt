@@ -1,0 +1,57 @@
+
+/callcenter autenticata usertype callcenter-walter
+-----------------------------------------------------------------------------------------------------------------------------
+psystem-callcenter
+-----------------------------------------------------------------------------------------------------------------------------
+id-richiesta	richiedente     data    richiesta   descrizione (cosa vuole, entro quando, orario, indirizzo, )   stato  volunteer    codice   [cta]
+|               
+|
+|
+|
+|
+|
+|
+|
+[Add new request]
+
+db
+
+RICHIESTA{
+    id
+    richiedente
+    data
+    descrizione
+    stato (to assign, to verify, running, completed)
+    volunteer FK
+    codice
+}
+
+
+creazione richieta --> form chiamata FRONTEND(/callcenter/request)
+    compilazione form
+    chiamata API -->post /callcenter/request --> aggiunge una tupla alla tabella richiesta, mettendo come stato della 
+    richiesta TO-ASSIGN.
+    nella colonna cta sarà visualizzato un bottone/select/modal che permette di scegliere un volontario
+
+assegnazione della richiesta
+    con il bottone/select/modal viene scelto un volontario,
+    chiamata API GET --> callcenter/volunteers
+    chiamata API POST -->callcenter/volunteer assigned {id:id, volunteer:volunteer}
+    lo stato passa a to verify, viene generato un link a un qrcode per verificare stato immunità e volontario
+    [inviata mail con il campo descrizione della richiesta e il link]-->non lo facciamo
+
+accettazione della richiesta
+    [il volontario riceve la mail con le informazioni e il qrcode. Utilizzando Dicksme prova il suo stato
+    viene chiamata la rotta API /api/v1/verification/verify/confirm] -->non lo facciamo noi
+    se la richiesta ha avuto successo genero un codice che comunico a Marco con una mail,
+    lo stato della richiesta passa a running aggiorno il db salvando il codice.
+    Otherwise, in caso di errore lo stato torna a to assign.
+
+chiusura della richiesta
+    [il callcenter riceverà una chiamata dalla signora franca che comunica il codice. il codice viene verificato.] se il codice è corretto la richiesta passa
+    allo stato di completo chiamata API POST callcenter/complete{id:id}-->(non visualizzate in dashboard)
+
+
+
+
+
