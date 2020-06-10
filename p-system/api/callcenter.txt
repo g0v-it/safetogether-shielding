@@ -4,7 +4,7 @@
 psystem-callcenter
 -----------------------------------------------------------------------------------------------------------------------------
 id-richiesta	richiedente     data    richiesta   descrizione (cosa vuole, entro quando, orario, indirizzo, )   stato  volunteer    codice   [cta]
-|               
+|
 |
 |
 |
@@ -26,18 +26,23 @@ RICHIESTA{
     codice
 }
 
+API
+GET /callcenter/requests return all requests
+POST /callcenter/request crea la request
+GET /callcenter/volunteers return all volunteer
+PUT /callcenter/request/:id assegna volunteer a request con id = id
 
 creazione richieta --> form chiamata FRONTEND(/callcenter/request)
     compilazione form
-    chiamata API -->post /callcenter/request --> aggiunge una tupla alla tabella richiesta, mettendo come stato della 
+    chiamata API -->post /callcenter/request --> aggiunge una tupla alla tabella richiesta, mettendo come stato della
     richiesta TO-ASSIGN.
     nella colonna cta sarà visualizzato un bottone/select/modal che permette di scegliere un volontario
 
 assegnazione della richiesta
     con il bottone/select/modal viene scelto un volontario,
     chiamata API GET --> callcenter/volunteers
-    chiamata API POST -->callcenter/volunteer assigned {id:id, volunteer:volunteer}
-    lo stato passa a to verify, viene generato un link a un qrcode per verificare stato immunità e volontario
+    chiamata API PUT /callcenter/request/:id {volunteer:volunteer}
+    lo stato passa a to verify, viene generato un link (id come requestUID) a un qrcode per verificare stato immunità e volontario
     [inviata mail con il campo descrizione della richiesta e il link]-->non lo facciamo
 
 accettazione della richiesta

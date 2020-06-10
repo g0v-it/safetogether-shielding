@@ -6,8 +6,13 @@ const CertificateModel = require('../model/Certificate')
 
 
 router.post('/api/v1/verification/verify/confirm', async (req, res) => {
+    console.log(req.body)
+    // Per adesso, se non ho un certificato per lui facciamo che è una verify per il callcenter
+
+
+    // todo differenziare PRoof_0002 per rilascare il certificato di volonteer,
+    // mentre il PROOF_00003 per verifica soltanto per il callcenter
     const rows = await CertificateModel.get(req.body.request_uid);
-    // [user_token, request_uid, operator, name, surname, birthdate, birthplace, covid_status]
     const isValid = rows.length > 0 && req.body.revealed_attributes.status == "healthy";
     //TODO: rimuovere il certificatap se la verify fallisce
     res.json({

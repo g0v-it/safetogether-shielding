@@ -14,5 +14,15 @@ module.exports = {
         const isInDB = (await db.query(isInDBQuery)).length > 0;
         if (!isInDB)
             await db.query(insertQuery)
+    },
+
+
+    getAll: async () => {
+        const q = `
+            SELECT *
+            FROM User
+        `
+
+        return await db.query(q);
     }
 }

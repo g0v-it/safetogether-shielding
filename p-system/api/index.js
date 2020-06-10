@@ -2,7 +2,7 @@ const express = require('express');
 const apiRouter = require('./routers/api')
 const dizmeRouter = require('./routers/dizme')
 
-const port = 80;
+const port = 8082;
 const app = express();
 
 

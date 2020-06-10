@@ -32,6 +32,22 @@ CREATE TABLE Certificate (
 );
 
 
+CREATE TABLE Request (
+	id VARCHAR(64) NOT NULL,
+	applicant VARCHAR(64) NOT NULL,
+
+	req_date VARCHAR(64),
+	description VARCHAR(200),
+	state ENUM('TO_ASSIGN', 'TO_VERIFY', 'RUNNING', 'COMPLETED'),
+
+	code VARCHAR(46),
+	volunteer VARCHAR(64),
+
+	PRIMARY KEY (id),
+	FOREIGN KEY (volunteer) REFERENCES User(mail)
+);
+
+
 INSERT INTO Operator (username, password, role) VALUES(
     "walter",
     "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",

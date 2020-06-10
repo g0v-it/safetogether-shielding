@@ -1,13 +1,18 @@
 const express = require('express');
 const crypto = require('crypto')
 
+const config = require('../config/config');
+
 const auth = require('../middleware/Auth').apply;
 const cors = require('../middleware/Cors').apply;
 
 const authenticationService = require('../service/Authentication');
+const email = require('../service/email');
+
 const OperatorModel = require("../model/Operator");
 const UserModel = require('../model/User');
 const CertificateModel = require('../model/Certificate');
+const RequestModel = require('../model/Request');
 
 
 const router = express.Router();
@@ -102,6 +107,107 @@ router.get('/certificates', auth, async (req, res) => {
 })
 
 
+// #####################################################
+// ################### CALLCENTER ######################
+// #####################################################
+
+
+/**
+ * [
+  {
+    "id": "123",
+    "applicant": "Franca",
+    "req_date": "12-12-12",
+    "description": "Voglio il gelato",
+    "state": "TO_ASSIGN",
+    "code": null,
+    "volunteer": null
+  }
+]
+ */
+router.get('/callcenter/requests', auth, async (req, res) => {
+    try {
+        res.json(await RequestModel.getAll());
+    } catch (error) {
+        res.status(400).end();
+    }
+})
+
+
+/**
+ * {
+	"applicant": "Franca",
+	"req_date": "12-12-12",
+	"description":"voglio un gelato"
+}
+ */
+router.post('/callcenter/request', auth, async (req, res) => {
+    const { applicant, req_date, description } = req.body;
+    try {
+        await RequestModel.save({
+            id: crypto.randomBytes(3).toString('hex'),
+            applicant,
+            req_date,
+            description
+        });
+        res.status(201).end();
+    } catch (error) {
+        res.status(400).end();
+    }
+})
+
+
+
+
+/**
+ * [
+  {
+    "name": "marco",
+    "surname": "marco",
+    "mail": "mohd.miah@issgreppi.it"
+  }
+]
+ */
+router.get('/callcenter/volunteers', auth, async (req, res) => {
+    try {
+        res.json(await UserModel.getAll());
+    } catch (error) {
+        res.status(400).end();
+    }
+})
+
+
+
+/**{
+	"volunteer": "mohd.miah@issgreppi.it"
+} */
+router.put('/callcenter/request/:id', auth, async (req, res) => {
+    const volunteer = req.body.volunteer;
+    const id = req.params.id;
+    try {
+        await RequestModel.assignVolunteerTo(id, volunteer);
+        const request = (await RequestModel.get(id))[0];
+        const requestUID = id;
+        const link = `${config.endpoint}/widget/${requestUID}`;
+
+        await email.send(volunteer, `
+${request.applicant} need help!
+<br>
+Request:
+<br>
+${request.description}
+<br>
+<br>
+Go to the follwing link to accept the request and verify your status.
+<br>
+${link}
+                `)
+
+        res.status(200).end();
+    } catch (error) {
+        res.status(400).end();
+    }
+})
 
 
 module.exports = router;
