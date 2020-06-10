@@ -1,7 +1,7 @@
 
 const sgMail = require('@sendgrid/mail');
 //Todo da spostare su env
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
     to: 'mohd.miah@issgreppi.it',

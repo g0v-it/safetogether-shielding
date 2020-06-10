@@ -4,8 +4,8 @@ services:
     build: ./store
     ports:
       - 3306:3306
-    volumes:
-      - "dbdata:/var/lib/mysql"
+    # volumes:
+    #   - "dbdata:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: psystemdb
@@ -30,17 +30,18 @@ services:
       MYSQL_USER: psystemapi
       MYSQL_PASSWORD: 12344
       API_ENDPOINT: http://localhost:8082/web
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
 
-for passing env varibile at build stage, see note at https://docs.docker.com/compose/compose-file/#environment
-  frontend:
-    build:
-      context: ./frontend
-      args:
-        - API_ENDPOINT=http://localhost:8082/web
-    ports:
-      - 8080:80
-    depends_on:
-      - api
+# # for passing env varibile at build stage, see note at https://docs.docker.com/compose/compose-file/#environment
+#   frontend:
+#     build:
+#       context: ./frontend
+#       args:
+#         - API_ENDPOINT=http://localhost:8082/web
+#     ports:
+#       - 8080:80
+#     depends_on:
+#       - api
 
 volumes:
   dbdata:

@@ -191,7 +191,7 @@ router.put('/callcenter/request/:id', auth, async (req, res) => {
         const link = `${config.endpoint}/widget/${requestUID}`;
 
         await email.send(volunteer, `
-${request.applicant} need help!
+${request.applicant} need your help!
 <br>
 Request:
 <br>
