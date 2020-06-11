@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig, Route } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import Callcenter from '../views/Callcenter.vue'
 import { isAuthenticated } from "@/util/auth.ts";
 
 const ifAuthenticated = (to: Route, from: Route, next: Function) => {
@@ -26,6 +27,12 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'dashboard',
     component: Dashboard,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/callcenter',
+    name: 'callcenter',
+    component: Callcenter,
     beforeEnter: ifAuthenticated
   },
   {
