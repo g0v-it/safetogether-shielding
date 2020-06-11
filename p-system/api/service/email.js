@@ -20,14 +20,14 @@ module.exports = {
             to,
             html
         })
-        try {
-            await sgMail.send({
-                ...msg,
-                to,
-                html
-            })
-        } catch (e) {
-            console.log(e)
-        }
+        // try {
+        //     await sgMail.send({
+        //         ...msg,
+        //         to,
+        //         html
+        //     })
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
 }
