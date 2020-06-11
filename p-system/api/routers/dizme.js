@@ -10,7 +10,6 @@ const email = require('../service/email')
 // todo differenziare PRoof_0002 per rilascare il certificato di volonteer,
 // mentre il PROOF_00003 per verifica soltanto per il callcenter
 router.post('/api/v1/verification/verify/confirm', async (req, res) => {
-    console.log(req.body)
     const id = req.body.request_uid;
     // Per adesso, se non ho un certificato per lui facciamo che è una verify per il callcenter
     const rows = await CertificateModel.get(id);
@@ -18,6 +17,7 @@ router.post('/api/v1/verification/verify/confirm', async (req, res) => {
     if (rows.length > 0) {
         const isValid = req.body.revealed_attributes.status == "healthy";
         //TODO: rimuovere il certificatap se la verify fallisce
+
         res.json({
             status_code: 100,
             message_code: 0,
@@ -33,7 +33,7 @@ router.post('/api/v1/verification/verify/confirm', async (req, res) => {
     } else {
         const requests = await RequestModel.get(id);
         const volunteer = requests[0].volunteer;
-        const code = crypto.randomBytes(3).toString('hex');
+        const code = crypto.randomBytes(2).toString('hex');
         const isValid = req.body.revealed_attributes.status == "healthy";
         res.json({
             status_code: 100,
@@ -50,14 +50,11 @@ router.post('/api/v1/verification/verify/confirm', async (req, res) => {
             await RequestModel.assignCodeTo(id, code);
 
             email.send(volunteer, `
-        Here your seecre code
+Here is your secret code <strong>${code.toUpperCase()}</strong>.
         `)
         }else{
             await RequestModel.reset(id);
         }
-
-
-
     }
 });
 

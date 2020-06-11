@@ -2,7 +2,7 @@
 const sgMail = require('@sendgrid/mail');
 //Todo da spostare su env
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-console.log(process.env.SENDGRID_API_KEY);
+// console.log(process.env.SENDGRID_API_KEY);
 const msg = {
     to: 'mohd.miah@issgreppi.it',
     from: 'mohdehtesham.miah@mail.polimi.it',
@@ -15,10 +15,19 @@ const msg = {
 
 module.exports = {
     send: async (to, html) => {
-        // await sgMail.send({
-        //     ...msg,
-        //     to,
-        //     html
-        // })
+        console.log({
+            ...msg,
+            to,
+            html
+        })
+        try {
+            await sgMail.send({
+                ...msg,
+                to,
+                html
+            })
+        } catch (e) {
+            console.log(e)
+        }
     }
 }

@@ -192,7 +192,6 @@ router.put('/callcenter/request/:id', auth, async (req, res) => {
         const request = (await RequestModel.get(id))[0];
         const requestUID = id;
         const link = `${config.endpoint}/widget/${requestUID}`;
-        console.log(link)
 
         await email.send(volunteer, `
 ${request.applicant} need your help!
@@ -213,5 +212,10 @@ ${link}
     }
 })
 
+
+router.put('/callcenter/request/complete/:id', auth, async (req, res) => {
+    await RequestModel.complete(req.params.id);
+    res.status(200).end();
+})
 
 module.exports = router;

@@ -15,7 +15,7 @@ app.set('view engine', 'ejs')
 app.use('/', dizmeRouter);
 app.use('/web', apiRouter);
 
-app.get('/app',(req,res)=>res.json("ciao"))
+app.get('/app', (req, res) => res.json("ciao"))
 
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

@@ -48,6 +48,15 @@ module.exports = {
         await db.query(q);
     },
 
+    complete: async (id) => {
+        const q = `
+            UPDATE Request
+            SET state='COMPLETED'
+            WHERE id='${id}'
+        `;
+        await db.query(q);
+    },
+
     reset: async (id) => {
         const q = `
             UPDATE Request

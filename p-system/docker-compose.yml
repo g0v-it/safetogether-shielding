@@ -29,7 +29,7 @@ services:
       MYSQL_DATABASE: psystemdb
       MYSQL_USER: psystemapi
       MYSQL_PASSWORD: 12344
-      API_ENDPOINT: http://localhost:8082/web
+      API_ENDPOINT: http://psystemshielding.ngrok.io/web
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
 
 # # for passing env varibile at build stage, see note at https://docs.docker.com/compose/compose-file/#environment
