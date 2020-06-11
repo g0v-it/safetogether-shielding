@@ -30,6 +30,12 @@ const routes: Array<RouteConfig> = [
     beforeEnter: ifAuthenticated
   },
   {
+    path: '/callcenter/request',
+    name: 'request',
+    component: () => import('../views/Request.vue'),
+    beforeEnter: ifAuthenticated
+  },
+  {
     path: '/callcenter',
     name: 'callcenter',
     component: Callcenter,

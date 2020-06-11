@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <Navbar />
+    <Navbar btnNewString="New Credential" btnNewRoute="issue" home="dashboard"/>
     <div class="container">
       <div class="row m-4" v-for="cred in credentials" :key="cred.name+cred.surname">
         <p class="col">{{cred.name}}</p>

@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------
 psystem-callcenter
 -----------------------------------------------------------------------------------------------------------------------------
-id-richiesta	richiedente     data    richiesta   descrizione (cosa vuole, entro quando, orario, indirizzo, )   stato  volunteer    codice   [cta]
+id-richiesta	richiedente     data  richiesta   descrizione (cosa vuole, entro quando, orario, indirizzo, )   stato  volunteer    codice   [cta]
 |
 |
 |

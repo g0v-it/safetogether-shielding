@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <Navbar />
+    <Navbar btnNewString="New Credential" btnNewRoute="issue" home="dashboard"/>
     <div v-if="reqOK" class="alert alert-success" role="alert">
       Request accepted, visit
       <a
