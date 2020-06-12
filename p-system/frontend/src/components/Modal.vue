@@ -37,20 +37,12 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Modal",
   props: {
-    volunteers: Array,
-    requestId: String
+    volunteers: Array
   },
   data() {
     return {
       error: "",
-      selectedVolunteer: "",
-      updatedRequestId:""
-    }
-  },
-  watch: {
-    requestId: function(newVal, oldVal) {
-      console.log(newVal);
-      this.updatedRequestId=newVal;
+      selectedVolunteer: ""
     }
   },
   methods: {
@@ -58,7 +50,7 @@ export default Vue.extend({
       if (this.selectedVolunteer == "")
         this.error = "Please select a volunteer";
       else {
-        console.log(this.updatedRequestId);
+        this.$emit('selectedVolunteer', this.selectedVolunteer)
       }
     }
   }
