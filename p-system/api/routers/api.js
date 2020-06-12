@@ -75,7 +75,7 @@ router.post('/issue', auth, async (req, res) => {
     try {
         const operator = authenticationService.getPayload(req.headers['authorization']).username;
         await UserModel.save(name, surname, email)
-        await CertificateModel.save({ name, surname, birthdate, birthplace, department, location, email, requestUID, operator, timestamp: Date.now() })
+        await CertificateModel.save({ name, surname, birthdate, birthplace, department, location, email, requestUID, operator, timestamp: Date.now() / 1000 })
 
     } catch (error) {
         res.status(400).end();

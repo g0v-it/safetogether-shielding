@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <Navbar btnNewString="New Request" btnNewRoute="issue" home="callcenter"/>
+    <Navbar btnNewString="New Request" btnNewRoute="request" home="callcenter"/>
      <div v-if="reqOK" class="alert alert-success" role="alert">
       Request accepted
       <button
@@ -41,7 +41,7 @@
           <label>information</label>
           <textarea v-model="request.deliveryInformation"  class="form-control" />
         </div>
-        
+
         <button type="submit" class="btn btn-primary mr-4">Add Request</button>
       </form>
     </div>
@@ -59,7 +59,7 @@ import config from "../config";
 
 
 export default Vue.extend({
-  name: "Issue",
+  name: "Request",
   components: {
     Navbar
   },
@@ -71,7 +71,7 @@ export default Vue.extend({
         city:"",
         address:"",
         deliveryDate:"",
-        deliveryInformation:""        
+        deliveryInformation:""
       },
       reqOK:false,
       apiEndpoint: config.apiEndpoint

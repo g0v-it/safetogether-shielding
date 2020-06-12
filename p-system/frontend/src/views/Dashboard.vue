@@ -1,19 +1,34 @@
 <template>
   <div class="dashboard">
-    <Navbar btnNewString="New Credential" btnNewRoute="issue" home="dashboard"/>
+    <Navbar btnNewString="New Credential" btnNewRoute="issue" home="dashboard" />
     <div class="container">
-      <div class="row m-4" v-for="cred in credentials" :key="cred.name+cred.surname">
-        <p class="col">{{cred.name}}</p>
-        <p class="col">{{cred.surname}}</p>
-        <p class="col">{{formatDate(new Date(cred.timestamp))}}</p>
-        <div class="col d-flex justify-content-around">
-          <button
-            @click="$router.push({name:'issue', query:{...cred}})"
-            class="btn btn-outline-primary"
-          >Duplicate</button>
-          <button @click="$router.push({name:'revoke'})" class="btn btn-outline-danger">Revoke</button>
-        </div>
-      </div>
+      <table class="table m-4">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Issued</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(cred) in credentials" :key="cred.name+cred.surname">
+            <!-- <th scope="row">{{i}}</th> -->
+            <td >{{cred.name}}</td>
+            <td >{{cred.surname}}</td>
+            <td>{{formatDate(new Date(cred.timestamp))}}</td>
+            <td class="d-flex justify-content-end">
+              <button
+                @click="$router.push({name:'issue', query:{...cred}})"
+                class="btn btn-outline-primary mr-3"
+              >Duplicate</button>
+              <button @click="$router.push({name:'revoke'})" class="btn btn-outline-danger">Revoke</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </template>

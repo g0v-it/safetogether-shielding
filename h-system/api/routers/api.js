@@ -66,7 +66,7 @@ router.post('/issue', auth, async (req, res) => {
     try {
         const operator = authenticationService.getPayload(req.headers['authorization']).username;
         await UserModel.save(username, email)
-        await CertificateModel.save({ name, surname, birthdate, birthplace, status, email, requestUID, operator, timestamp: Date.now() })
+        await CertificateModel.save({ name, surname, birthdate, birthplace, status, email, requestUID, operator, timestamp: Date.now() / 1000 })
 
     } catch (error) {
         res.status(400).end();
@@ -89,7 +89,7 @@ router.get('/certificates', auth, async (req, res) => {
             birthdate: r.birthdate,
             birthplace: r.birthplace,
             status: r.covid_status,
-            timestamp:r.req_timestamp
+            timestamp: r.req_timestamp
         }));
 
     } catch (error) {
