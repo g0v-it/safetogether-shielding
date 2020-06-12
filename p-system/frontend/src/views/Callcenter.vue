@@ -1,7 +1,9 @@
 <template>
   <div class="callcenter">
-    <Modal v-show="isModalVisible" @close="closeModal" />
+    <Modal v-if="isModalVisible" @close="isModalVisible = false" :volunteers="volunteers" :requestID="requestToAssign"/>
+
     <Navbar btnNewString="New Request" btnNewRoute="request" home="callcenter" />
+
     <div class="container">
       <div class="row m-8" v-for="request in requests" :key="request.id">
         <p class="col">{{request.id}}</p>
@@ -11,7 +13,7 @@
         <p class="col">{{request.state}}</p>
         <template v-if="request.state=='TO_ASSIGN'">
           <div class="col d-flex justify-content-around">
-            <button class="btn btn-outline-primary" @click="showModal">Assign</button>
+            <button class="btn btn-outline-primary" @click="showModalAndUpdareId(request.id)">Assign</button>
           </div>
         </template>
         <template v-if="request.state=='TO_VERIFY'">
@@ -39,6 +41,7 @@ export default Vue.extend({
   name: "Dashboard",
   data() {
     return {
+      requestToAssign:"",
       isModalVisible: false,
       requests: null,
       volunteers: null
@@ -58,11 +61,9 @@ export default Vue.extend({
     formatDate(date: Date) {
       return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
     },
-    showModal() {
-      this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
+    showModalAndUpdareId(id: string){
+      this.requestToAssign=id;
+      this.isModalVisible=true;
     }
   }
 });
