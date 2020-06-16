@@ -46,7 +46,7 @@
                 <div class="col-auto">
                   {{request.volunteer}}
                   <br />
-                  CODE: {{request.code}}
+                  CODE: {{request.code.toUpperCase()}}
                 </div>
                 <div class="col d-flex justify-content-around">
                   <button

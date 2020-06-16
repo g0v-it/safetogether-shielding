@@ -35,7 +35,7 @@ services:
     build:
       context: ./frontend
       args:
-        - API_ENDPOINT=http://localhost:8082/web
+        - API_ENDPOINT=http://hsystemshielding.ngrok.io/web
     ports:
       - 8080:80
     depends_on:

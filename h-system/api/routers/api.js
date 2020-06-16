@@ -89,7 +89,7 @@ router.get('/certificates', auth, async (req, res) => {
             birthdate: r.birthdate,
             birthplace: r.birthplace,
             status: r.covid_status,
-            timestamp: r.req_timestamp
+            timestamp: r.req_timestamp * 1000
         }));
 
     } catch (error) {
