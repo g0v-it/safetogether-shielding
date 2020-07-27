@@ -14,4 +14,7 @@ The main components of the Shielding System are summarized in following  picture
 - The [h-system](h-system) code realizes the healthcare  system components.
 - The [p-system](p-system) code realizes the civic defense system components.
 
-This system includes technologies developed by [LinkedData.Center Mopso product](https://mopso.eu/) it reuses the Sovrign infrastructure through the DIZME app by Infocert.
+# Credits
+This system is developed by volunteers in the scope of the SafeTogeter community.
+
+This system includes technologies developed in the [LinkedData.Center Mopso product](https://mopso.eu/). It reuses the Sovrign infrastructure through the DIZME app by Infocert.
